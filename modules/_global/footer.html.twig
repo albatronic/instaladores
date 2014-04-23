@@ -1,0 +1,50 @@
+<footer>
+   <section id="footerTop">
+        <section class="contenedorCentral">
+           <article class="footerIzq">
+               <nav>                
+                   <ul>
+                      {% for seccion in values.menuPie  %}
+                       <li><a href="{{seccion.url.url}}" title="{{seccion.etiquetaWeb}}">{{seccion.etiquetaWeb}}</a></li>
+                      {% endfor %}
+                   </ul>
+               </nav>
+
+               <article class="situacion">
+                   <div class="direccion">
+                       <span class="sprite"></span>
+                       {{values.datosContacto.direccion}}
+                   </div>
+
+                   <div class="telefono">
+                       <span class="sprite"></span>
+                       {{values.datosContacto.telefono1}}
+                   </div>
+
+                   <div class="email">
+                       <span class="sprite"></span>
+                       <a href="mailto:{{values.LABELS.emailInfo}}" title="{{values.LABELS.emailInfo}}">{{values.datosContacto.emailInfo}}</a>
+                   </div>                                      
+               </article>
+           </article>
+
+           <article class="footerDer">
+               <span>{{values.LABELS.siguenos}}</span>
+               <a href="" id="facebook" title="{{values.LABELS.facebook}}">{{values.LABELS.facebook}}</a>
+               <a href="" id="twitter" title="{{values.LABELS.twitter}}">{{values.LABELS.twitter}}</a>
+           </article>
+        </section>   
+   </section>
+
+   <section id="footerBottom">
+        <section class="contenedorCentral">
+           <article class="footerIzq">
+               <a href="{{app.path}}/aviso-legal" rel="iframe-1000-360" class="pirobox" title="{{values.LABELS.avisoLegal}}">{{values.LABELS.avisoLegal}}</a>
+           </article>
+
+           <article class="footerDer">
+               <!-- <a href="" title="">Diseño web: Alejandro Gallardo</a> -->
+           </article>
+        </section>   
+   </section>
+</footer>

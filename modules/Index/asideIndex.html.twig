@@ -1,0 +1,58 @@
+<section class="columna right">
+    <a href="{{app.path}}/instalador" class="cajetinNoBorder" id="encuentreInstalador">
+        <span class="sprite"></span>
+        <span>
+            {{values.LABELS.encuentreInstalador}}
+        </span>
+    </a>
+
+    <a href="{{app.path}}/seguro-de-responsabilidad-civil" class="cajetinNoBorder" id="seguroCivil">
+        <span class="sprite"></span>
+        <span>
+            {{values.LABELS.seguroCivil}}
+        </span>
+    </a>    
+
+    {% include '_global/calendario.html.twig' %}     
+
+    <div id="newsticker-demo">    
+            {% set nBanner=values.banners|length %}
+            {% if nBanner<=6 %}
+            <ul>
+                {% for banner in values.banners %}
+                <li>
+                    <div class="thumbnail">
+                        {% if banner.url.url %}
+                            <a href="{{banner.url.url}}" title="{{banner.titulo}}" rel="pop-up">
+                        {% endif %}
+                            <img src="{{app.path}}/{{banner.imagenes[0]}}" title="{{banner.nombre}}" alt="{{banner.nombre|date('')}}" />
+                        {% if banner.url.url %}
+                            </a>
+                        {% endif %} 
+                    </div>
+                </li>
+                {% endfor %}
+
+            </ul>        
+                {% else %}  
+
+        <div class="newsticker-jcarousellite">              
+            <ul>
+                {% for banner in values.banners %}
+                <li>
+                    <div class="thumbnail">
+                        {% if banner.url.url %}
+                            <a href="{{banner.url.url}}" title="{{banner.titulo}}" rel="pop-up">
+                        {% endif %}
+                        <img src="{{app.path}}/{{banner.imagenes[0]}}" title="{{banner.titulo}}" alt="{{banner.titulo}}" />
+                        {% if banner.url.url %}
+                            </a>
+                        {% endif %}                            
+                    </div>
+                </li>  
+                {% endfor %}                                                                                                                           
+            </ul>
+        </div>
+    </div> 
+    {% endif %}       
+</section> 

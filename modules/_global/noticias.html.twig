@@ -1,0 +1,11 @@
+<section id="noticias">
+    <span class="superTitular">{{values.LABELS.noticias}}</span>
+    {% for noticia in values.noticia.rows %}
+    <article>
+        <h3 class="tituloNoticia">{{macro.link(noticia.Titulo,none,noticia.IdSeccion.Href.url,noticia.IDSeccion.Href.targetBlank)}}</h3>
+        {% if noticia.Subtitulo %}<span class="subtituloNoticia">{{noticia.Subtitulo}}</span>{% endif %}
+        <p>{% if noticia.Resumen|length >90 %}{{noticia.Resumen|slice(0, 90)}} ...{% else %}{{noticia.Resumen}}{% endif %}</p>
+        {{macro.link(none,noticia.Titulo,noticia.IdSeccion.Href.url,noticia.IdSeccion.Href.targetBlank,none,"saberMas right")}}        
+    </article>
+    {% endfor %}
+</section>

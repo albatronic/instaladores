@@ -1,0 +1,10 @@
+<article class="rutaDescargas">   
+    {% for key,ruta in values.ruta %}
+        {% if key>0 %}
+            <span class="sprite"></span>
+        {% endif %}        
+        <a {% if ruta.url.url != (app.path ~ urlAmigable)%}href="{{ruta.url.url}}{%endif%}">
+            <span class="spriteDescarga"></span>{{ruta.nombre}}
+        </a>
+    {% endfor %}
+</article>

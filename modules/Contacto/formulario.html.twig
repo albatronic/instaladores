@@ -1,0 +1,63 @@
+{# NOTAS A TENER EN CUENTA #}
+{# Para que se muestre el campo de Error en las celdas hay que añadir la palabra Error a la clase "celda"
+## quedando <input class="celdaError">
+## de la misma manera para el campo Checkbox tendría que quedar <div class="checkboxError">
+#}
+<article id="formulario">
+    <h1>{{values.LABELS.escribenos}}</h1>
+
+    {% if values.formContacta.accion == '' %}
+    <form name="formEnvio" id="formEnvio" action="" method="POST">
+        <div id="input_oculto">
+        <input name="controller" value="{{values.controller}}" />
+        <input name="action" value="Index" />
+        </div>
+
+        <!-- PRIMERA LINEA -->
+        <input type="text" name="campos[Nombre][valor]" 
+               value="{{values.formContacta.campos.Nombre.valor}}" 
+               class="marginRight15 celdaMed {% if values.formContacta.campos.Nombre.error %}celdaError {% else %}celda{% endif %}" 
+               onFocus="if (this.value==='{{values.formContacta.campos.Nombre.valor}}') this.value='';"
+               onBlur="if (this.value==='') this.value='Nombre';" />
+        
+        <input type="text" name="campos[Email][valor]"
+               value="{{values.formContacta.campos.Email.valor}}" 
+               class="celdaMed {% if values.formContacta.campos.Email.error %}celdaError {% else %}celda{% endif %}" 
+               onFocus="if (this.value==='{{values.formContacta.campos.Email.valor}}') this.value=''"
+               onBlur="if (this.value==='') this.value='Email';" />
+
+        <input type="text" name="campos[Telefono][valor]"
+               value="{{values.formContacta.campos.Telefono.valor}}" 
+               class="celdaPeq right {% if values.formContacta.campos.Telefono.error %}celdaError {% else %}celda{% endif %}" 
+               onFocus="if (this.value==='{{values.formContacta.campos.Telefono.valor}}') this.value='';"
+               onBlur="if (this.value==='') this.value='Telefono';" />
+
+        <!-- SEGUNDA LINEA -->               
+        <input type="text" name="campos[Asunto][valor]"
+               value="{{values.formContacta.campos.Asunto.valor}}" 
+               class="celdaGran {% if values.formContacta.campos.Asunto.error %}celdaError {% else %}celda{% endif %}" 
+               onFocus="if (this.value==='{{values.formContacta.campos.Asunto.valor}}') this.value='';" 
+               onBlur="if (this.value==='') this.value='Asunto';" />               
+
+        <!-- TERCERA LINEA -->
+        <textarea name="campos[Mensaje][valor]"
+                  class="celdaGran {% if values.formContacta.campos.Mensaje.error %}celdaError {% else %}celda{% endif %}" 
+                  rows="10" cols="" 
+                  onFocus="if (this.value==='{{values.formContacta.campos.Mensaje.valor}}') this.value='';"
+                  onBlur="if (this.value==='') this.value='Mensaje';">{{values.formContacta.campos.Mensaje.valor}}</textarea>
+
+        <div id="contenedorEnviar">
+            <div class="{% if values.formContacta.campos.leidoPolitica.error %}checkboxError {% else %}checkbox{% endif %}">
+                <input name="campos[leidoPolitica][valor]" type="checkbox" id="checkbox2" {% if values.formContacta.campos.leidoPolitica.valor == 'on' %} CHECKED{% endif %} />
+                <label class="textoCheckbox" for="checkbox2">{{values.LABELS.leidoPolitica}} <a href="{{app.path}}/politica-de-privacidad" rel="iframe-1000-360" class="pirobox" title="{{values.LABELS.politicaPrivacidad}}">{{values.LABELS.politicaPrivacidad}}.</a></label>
+            </div>
+
+            <input type="submit" class="boton btn_azul right" value="{{values.LABELS.enviar}}">
+        </div>
+    </form>
+    {% else %}
+        <div class="mensaje">
+            <div class="{%if values.formContacta.resultado%}exito mensajeEnviado{%else%}error{%endif%}">{{values.formContacta.mensaje}}</div>
+        </div>
+    {% endif %}
+</article>

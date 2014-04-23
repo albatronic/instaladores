@@ -1,0 +1,76 @@
+{% extends layout %}
+
+{% block navegacion %}{% include '_global/navegacionGeneral.html.twig' %}{% endblock %}
+
+{% block aside %}{% include '_global/asideGeneralyHome.html.twig' %}{% endblock %}
+
+{% block contenido %}
+
+<section class="contenedorGrande">
+    {% include '_global/ruta.html.twig' %}
+
+    <section id="fichaInstalador">
+        <article class="cabeceraInstalador">
+            <h1 class="instalador{{values.instalador.IdPerfil.Id}}">{{values.instalador.RazonSocial}}</h1>
+            <img src="{{app.path}}/images/logo{{values.instalador.IdPerfil.Id}}.png" />  
+        </article>    
+
+        <img id="logotipoInstalador" src="{{values.instalador.getPathNameImagenN(1)}}"/>        
+        <article class="contactoInstalador">
+            {% if values.instalador.ApellidosNombre %}
+            <article class="persona">
+                <span class="bold">{{values.TEXTS.personaContacto}}</span>
+                {{values.instalador.ApellidosNombre}}
+            </article>
+            {% endif %}
+
+            <article class="datos">
+                <span class="bold">{{values.TEXTS.datosContacto}}</span>
+                <span class="direccionInstalador"><span class="sprite"></span>{{values.instalador.Direccion}}<br />
+                <span class="marginLeft25">{{values.instalador.CodigoPostal}} - {{values.instalador.IdMunicipio.Municipio}} ({{values.instalador.IdProvincia.Provincia}})</span>
+                </span>
+                
+                <div class="width100">
+                    {% if values.instalador.Telefono %}
+                        <span class="telefonoInstalador"><span class="sprite"></span>{{values.instalador.Telefono}}</span>
+                    {% endif %}
+                    
+                    {% if values.instalador.Movil %}
+                        <span class="movilInstalador"><span class="sprite"></span>{{values.instalador.Movil}}</span>
+                    {% endif %}
+
+                    {% if values.instalador.Fax %}
+                        <span class="faxInstalador"><span class="sprite"></span>{{values.instalador.Fax}}</span>
+                    {% endif %}
+                </div>
+                
+                {% if values.instalador.Email %}
+                    <span class="mailInstalador"><span class="sprite"></span><a href="mailto:{{values.instalador.Email}}">{{values.instalador.Email}}</a></span>
+                {% endif %}
+
+                {% if values.instalador.Web %}
+                    <span class="webInstalador"><span class="sprite"></span><a href="http://{{values.instalador.Web}}">{{values.instalador.Web}}</a></span>
+                {% endif %}
+            </article>
+        </article>
+
+        {% if values.servicios|length > 0%}
+        <article id="serviciosInstalador">
+            <h2>Servicios</h2>
+            <ul>
+                {% for servicio in values.servicios %}
+                    <li><span class="sprite"></span>{{servicio.Titulo}}</li>
+                {% endfor %} 
+            </ul>
+        </article>
+        {% endif %}
+    </section>
+    <article class="botonera">
+        <a href="{{app.path}}/instalador" title="{{values.LABELS.volverAtras}}" class="sprite">{{values.LABELS.volverAtras}}</a>
+    </article>         
+</section>   
+{% endblock %}
+
+{% block bannerPie %}
+    {% include '_global/bannerPie.html.twig' %}   
+{% endblock %}

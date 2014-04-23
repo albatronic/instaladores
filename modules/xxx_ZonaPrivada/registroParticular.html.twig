@@ -1,0 +1,30 @@
+<section class="width100x100 marginTop40">
+    <h3 class="titularGrande">{{values.TEXTS.datosUsuario}}</h3>
+    <article class="cont100 marginRight30">
+        <label>{{values.TEXTS.nombreYApellidos}}</label>
+        <input type="text" name="registro[Par][RazonSocial]" value="{{values.registro.Par.RazonSocial}}" class="celda celda100" />
+    </article>
+
+    <article class="cont10 marginRight30">
+        <label>{{values.TEXTS.telefono}}</label>
+        <input type="text" name="registro[Par][Telefono]" value="{{values.registro.Par.Telefono}}" class="celda celda10" />
+    </article> 
+
+    <article class="cont50">
+        <label>{{values.TEXTS.provincia}}</label>
+        <select name="registro[Par][IDProvincia]" class="celda celda50 select">
+            {% for provincia in values.provincias %}
+                <option value="{{provincia.Id}}" {%if values.registro.Par.IDProvincia==provincia.Id%} SELECTED{%endif%}>{{provincia.Value}}</option>
+            {% endfor %}
+        </select>
+    </article>         
+</section>
+
+{# textarea para descripción de la empresa
+<section class="width100x100">
+        <article class="cont906">
+            <label>{{values.TEXTS.descripcionEmpresa}}</label>
+        <textarea name="registro[Par][Observations]" class="celda celda886">{{values.registro.Par.Observations}}</textarea>
+        </article> 
+</section>  
+ #}

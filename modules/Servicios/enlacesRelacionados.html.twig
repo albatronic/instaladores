@@ -1,0 +1,15 @@
+
+{% set nEnlaces = values.servicio.enlacesRelacionados.enlaces|length %}
+
+{% if nEnlaces > 0 %}
+<h6 class="azul bold">{{values.LABELS.enlacesRelacionados}}</h6>    
+<section class="enlaces">
+    {% for key,enlace in values.servicio.enlacesRelacionados.enlaces %} 	<article class="enlaceIndividual">   
+    		<span class="sprite"></span>   
+    		<h3>{{enlace.titulo}}</h3>      
+        	{{macro.link(enlace.url.url,none,enlace.url.url,enlace.url.targetBlank)}}
+    </article>
+    {% endfor %}
+</section>
+{% endif %}
+

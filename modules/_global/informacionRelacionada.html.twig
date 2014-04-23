@@ -1,0 +1,19 @@
+<article id="articulosRelacionados">
+    <span class="superTitular">{{values.LABELS.informacionRelacionada}}</span> 
+    
+    <div class="articulos">
+        <ul class="bjqs">
+            {% for articulo in values.informacionRelacionada %}
+            <li>
+                <a href="{{ articulo.Href.url }}">
+                    <img src="{{app.path}}/{{articulo.PathNameImagenN(2)}}" alt="{{ articulo.Subtitulo }}" title="{{ articulo.Subtitulo }}">
+                </a>
+                <h4><a href="{{ articulo.Href.url }}">{{ articulo.Titulo }}</a></h4>
+                <h5>{{ articulo.Subtitulo }}</h5>
+                <p>{{ articulo.Resumen }}</p>
+                <a href="{{ articulo.Href.url }}" class="botonRojo">{{values.LABELS.ampliar}}</a>
+            </li>
+            {% endfor %}
+        </ul>     
+    </div>
+</article>

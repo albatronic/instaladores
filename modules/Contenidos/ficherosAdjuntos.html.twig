@@ -1,0 +1,16 @@
+{% set archivos = values.contenidoDesarrollado.docsAdjuntos %}
+{% set nArchivos = archivos|length %}
+
+{% if nArchivos > 0 %}
+
+    <!-- ARCHIVOS ADJUNTOS -->
+    <h5 class="rojo bold">{{values.LABELS.archivosAdjuntos}}</h5>
+    <section id="adjuntos" class="cajaGris borderTopRojo">
+        <ul>
+            {% for key,archivo in archivos %}
+            <li><a href="{{app.path}}/{{archivo.PathName}}" rel="pop-up">{{archivo.Name}}</a></li>
+            {% endfor %}
+        </ul>
+    </section>
+    
+{% endif %}

@@ -1,0 +1,40 @@
+{% set paginacion = values.noticias.paginacion %}
+
+{% if paginacion.totalPaginas > 0 %}
+    <article class="paginacion">   
+        <form name="paginacion" id="formPaginacion" method="POST" action="">
+            <div id="input_oculto">
+                <input name="controller" value="{{values.controller}}" />
+                <input name="action" id="action" value="index" />
+                <input name="pagina" id="pagina" value="" />
+            </div>
+
+            {#<span>{{values.TEXTS.pagina}} {{values.noticias.paginacion.pagina}} {{values.TEXTS.de}} {{values.noticias.paginacion.totalPaginas}}</span> #}
+            {% if paginacion.pagina > 1 %}
+                {% set anterior = paginacion.pagina-1 %}
+            {% else %}
+                {% set anterior = 1 %}
+            {% endif %}
+            {% if paginacion.pagina < paginacion.totalPaginas %}
+                {% set siguiente = paginacion.pagina+1 %}
+            {% else %}
+                {% set siguiente = paginacion.totalPaginas %}
+            {% endif %}
+            {% set desde = paginacion.pagina-2 %}
+            {% set hasta = paginacion.pagina+2 %}
+            {% if desde<1%}{%set desde = 1%}{%endif%}
+            {% if hasta>paginacion.totalPaginas%}{%set hasta = paginacion.totalPaginas%}{%endif%}
+                
+            <a href="#" onclick="$('#pagina').val('1');$('#formPaginacion').submit();" title="{{values.LABELS.inicio}}" class="inicio"></a>                    
+            <a href="#" onclick="$('#pagina').val('{{anterior}}');$('#formPaginacion').submit();" title="{{values.LABELS.anterior}}" class="anterior"></a>
+            {% if desde>1%}<span class="separacion"></span>{%endif%}
+            {% for i in desde..hasta%}
+                <a href="#" onclick="$('#pagina').val('{{i}}');$('#formPaginacion').submit();" class="numeracion {% if i == paginacion.pagina%}activo{%endif%}">{{i}}</a>          
+            {% endfor %}
+            {% if hasta<paginacion.totalPaginas%}<span class="separacion"></span>{%endif%}
+            <a href="#" onclick="$('#pagina').val('{{siguiente}}');$('#formPaginacion').submit();" title="{{values.LABELS.siguiente}}" class="siguiente"></a>              
+            <a href="#" onclick="$('#pagina').val('{{paginacion.totalPaginas}}');$('#formPaginacion').submit();" title="{{values.LABELS.final}}" class="final"></a>              
+
+        </form>
+    </article>
+{% endif %} 

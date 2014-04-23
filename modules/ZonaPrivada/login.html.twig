@@ -1,0 +1,21 @@
+<form name="formLogin" id="formLogin" method="POST" action="">
+    <div id="input_oculto">
+        <input name="controller" value="ZonaPrivada" />
+        <input name="action" value="login" />
+    </div>
+
+    <article>
+        <!-- <label>{{values.TEXTS.eMail}}</label> -->
+        <input autocomplete="off" type="text" name="login[EMail]" id="login_Email" value="{{values.login.EMail}}" {%if values.login.error == '1'%}class="celdaError"{%else%}class="celda"{% endif %} placeholder="Usuario" />
+    </article>
+
+    <article>
+        <!-- <label>{{values.TEXTS.contrasena}}</label> -->
+        <input autocomplete="off" type="password" name="login[Password]" {%if values.login.error == '2'%}class="celdaError"{%else%}class="celda"{%endif%} placeholder="Contraseña" />
+    </article>
+   
+    <article id="contenedorEnviar">
+        <a href="{{app.path}}/olvido" class="olvido">{{values.TEXTS.olvideMiContrasena}}</a>
+        <input type="submit" value="{{values.TEXTS.enviar}}" data-type="submit" onclick="$('#formLogin').submit();" title="{{values.TEXTS.enviar}}" class="boton btn_azul right" />
+    </article>
+</form>

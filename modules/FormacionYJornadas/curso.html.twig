@@ -1,0 +1,101 @@
+{% extends layout %}
+
+{% block navegacion %}
+    {% include '_global/navegacionGeneral.html.twig' %}
+{% endblock %}
+
+{% block aside %} {% include 'Contacto/asideContacto.html.twig' %} {% endblock %}
+
+{% block contenido %}
+    {% set contenido = values.contenidoDesarrollado.contenido %}  
+<section class="contenedorGrande">
+    {% include '_global/ruta.html.twig' %}
+
+    <h1 class="titularCurso"><span>{{contenido.Titulo}}</span></h1>
+
+    <section class="infoCurso">
+        <article class="left cursoFormacionYJornadasInfo">
+            <img src="{{app.path}}/{{contenido.getPathNameImagenN(3)}}" title="{{contenido.Titulo}}" alt="{{contenido.Titulo}}">            
+            <br/><br/>
+            <div class="contenedorNoticia">
+                {% if values.contenidoDesarrollado.contenido.Desarrollo %}
+                    <p>{% autoescape false%}{{values.contenidoDesarrollado.contenido.Desarrollo}}{% endautoescape%}</p>
+                {% endif %}
+            </div>
+        </article>
+
+        <article class="inscripcionCurso right">
+            {% if values.formContacta.accion == '' %}            
+            <form name="inscripcion" method="POST" action="">
+                <div id="input_oculto">
+                    <input name="controller" value="Contenidos" />
+                    <input name="action" value="Index" />
+                    <input name="entity" value="{{values.entity}}" />
+                    <input name="idEntity" value="{{values.idEntity}}" />
+                </div>
+            <h2>{%if contenido.getMetadata('Formacion_o_Jornadas')=='F'%}{{values.LABELS.inscribeteCurso}}{%else%}{{values.LABELS.inscribeteJornada}}{%endif%}</h2>
+
+            <input type="text" name="campos[Nombre][valor]" 
+               value="{{values.formContacta.campos.Nombre.valor}}" 
+               class="{% if values.formContacta.campos.Nombre.error %}celdaError {% else %}celda{% endif %}" 
+               onFocus="if (this.value==='{{values.formContacta.campos.Nombre.valor}}') this.value='';"
+               onBlur="if (this.value==='') this.value='Nombre';" />
+            <input type="text" name="campos[Apellidos][valor]" 
+               value="{{values.formContacta.campos.Apellidos.valor}}" 
+               class="{% if values.formContacta.campos.Apellidos.error %}celdaError {% else %}celda{% endif %}" 
+               onFocus="if (this.value==='{{values.formContacta.campos.Apellidos.valor}}') this.value='';"
+               onBlur="if (this.value==='') this.value='Apellidos';" />
+            <input type="text" name="campos[DNI][valor]" 
+               value="{{values.formContacta.campos.DNI.valor}}" 
+               class="{% if values.formContacta.campos.DNI.error %}celdaError {% else %}celda{% endif %}" 
+               onFocus="if (this.value==='{{values.formContacta.campos.DNI.valor}}') this.value='';"
+               onBlur="if (this.value==='') this.value='DNI';" />
+            <input type="text" name="campos[Empresa][valor]" 
+               value="{{values.formContacta.campos.Empresa.valor}}" 
+               class="{% if values.formContacta.campos.Empresa.error %}celdaError {% else %}celda{% endif %}" 
+               onFocus="if (this.value==='{{values.formContacta.campos.Empresa.valor}}') this.value='';"
+               onBlur="if (this.value==='') this.value='Empresa';" />
+            <input type="text" name="campos[Telefono][valor]" 
+               value="{{values.formContacta.campos.Telefono.valor}}" 
+               class="{% if values.formContacta.campos.Telefono.error %}celdaError {% else %}celda{% endif %}" 
+               onFocus="if (this.value==='{{values.formContacta.campos.Telefono.valor}}') this.value='';"
+               onBlur="if (this.value==='') this.value='Telefono';" />
+            <input type="text" name="campos[Email][valor]" 
+               value="{{values.formContacta.campos.Email.valor}}" 
+               class="{% if values.formContacta.campos.Email.error %}celdaError {% else %}celda{% endif %}" 
+               onFocus="if (this.value==='{{values.formContacta.campos.Email.valor}}') this.value='';"
+               onBlur="if (this.value==='') this.value='Email';" />
+
+            <textarea name="campos[Comentarios][valor]" class="{% if values.formContacta.campos.Comentarios.error %}celdaError {% else %}celda{% endif %}" rows="10" cols="" 
+                      onFocus="if (this.value==='{{values.formContacta.campos.Comentarios.valor}}') this.value='';"
+                      onBlur="if (this.value==='') this.value='Comentarios';">{{values.formContacta.campos.Comentarios.valor}}</textarea>
+
+            <input type="submit" value="suscribirme" class="enviar">  
+
+            <div class="checkbox{% if values.formContacta.campos.leidoPolitica.error %}Error{%endif%}">
+                <input name="campos[leidoPolitica][valor]" type="checkbox" id="checkbox3" {% if values.formContacta.campos.leidoPolitica.valor == 'on' %} CHECKED{% endif %} />
+                <label class="textoCheckbox" for="checkbox3">{{values.LABELS.acepto}} <a href="{{app.path}}/politica-de-privacidad" rel="iframe-1000-360" class="pirobox" title="{{values.LABELS.condiciones}}">{{values.LABELS.condiciones}}.</a></label>                
+            </div>                 	               		               		               
+            </form>
+            {% else %}
+                <div class="mensaje">
+                    <div class="{%if values.formContacta.resultado%}exito mensajeEnviado{%else%}error{%endif%}">{{values.formContacta.mensaje}}</div>
+                </div>
+            {% endif %}                
+        </artcile>
+    </section>
+    
+        
+    {% if contenido.ShowDocuments.IDTipo == '1' %}
+        {% include 'FormacionYJornadas/ficherosAdjuntos.html.twig' %}  
+    {% endif %}
+
+    <article class="botonera">
+        <a href="javascript:history.back()" title="{{values.LABELS.volverAtras}}" class="sprite">{{values.LABELS.volverAtras}}</a>
+    </article>
+</section>   
+{% endblock %}
+
+{% block bannerPie %}
+    {% include '_global/bannerPie.html.twig' %}   
+{% endblock %}

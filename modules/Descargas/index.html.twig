@@ -1,0 +1,52 @@
+{% extends layout %}
+
+{% block navegacion %}{% include '_global/navegacionGeneral.html.twig' %}{% endblock %}
+
+{% block aside %}{% include '_global/asideGeneralyHome.html.twig' %}{% endblock %}
+
+{% block contenido %}
+
+{% set descarga = values.seccionDescarga %}
+<section class="contenedorGrande">
+    {# include '_global/ruta.html.twig' #}
+    <h1>{{descarga.titulo}}</h1>
+    <h2 class="subtitulo">{{descarga.subtitulo}}</h2>
+	{% include 'Descargas/rutaDescargas.html.twig' %}
+	
+	<section id="galeriaDescargas">
+            {% for subseccion in descarga.subsecciones %}
+		<article>
+                    <a href="{{app.path}}{{subseccion.url.url}}" class="imagenDescarga" {%if subseccion.url.targetBlank%}target="_blank"{%endif%}>
+                        <img src="{{app.path}}/{{subseccion.imagen}}" title="{{subseccion.titulo}}" alt="{{subseccion.titulo}}">
+                    </a>
+                    <h3><a href="{{app.path}}{{subseccion.url.url}}" {%if subseccion.url.targetBlank%}target="_blank"{%endif%}>{{subseccion.titulo}}</a></h3>
+                    <h4>{{subseccion.subtitulo}}</h4>
+		</article>
+            {% endfor %}
+	</section>
+
+	<!-- ARCHIVOS ADJUNTOS -->
+        {% if descarga.documentos | length > 0 %}
+	<section id="adjuntos" class="cajaGris borderTopRojo">
+            <h5>{{values.LABELS.archivos}}</h5>
+            <ul>
+                {% for documento in descarga.documentos %}
+                    <li><a href="{{app.path}}/{{documento.PathName}}" target="_blank" rel="pop-up">{{documento.Title}}</a></li>
+                {% endfor %}
+            </ul>
+	</section>
+        {% endif %}
+
+	<!-- BOTONERA -->
+        {% if descarga.nivelJerarquico > 1 %}
+	<article class="botonera">
+            <a href="javascript:history.back()" title="{{values.LABELS.carpetaAnterior}}" class="sprite">{{values.LABELS.carpetaAnterior}}</a>
+        </article>
+        {% endif %}
+</section>   
+{% endblock %}
+
+{% block bannerPie %}
+    {% include '_global/bannerPie.html.twig' %}   
+{% endblock %}
+	

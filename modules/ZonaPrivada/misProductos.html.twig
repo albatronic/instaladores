@@ -1,0 +1,34 @@
+{% extends layout %}
+
+
+{% block menuCabecera %}{% endblock %}
+
+{% block contenido %}
+{#
+    <div class="clearBuscador">
+        {% if values.categoria.BelongsTo.IDFamilia > 0 %}
+            {{values.categoria.BelongsTo.Familia}} / 
+        {% endif %}
+        {{values.categoria.Familia}}
+    </div>
+    #}
+
+    <h1 class="superTitular">
+        {{values.LABELS.misProductos | capitalize}}          
+    </h1>
+    {% include values.controller ~ '/menuCabecera.html.twig' %}
+
+    {% if values.productos.articulos | length > 0 %}
+        {% include values.controller ~ '/productos.html.twig' %}
+
+        <section>
+            {% include '_global/noticias.html.twig' %}
+            {% include '_global/informacionRelacionada.html.twig' %}
+        </section> 
+    {% else %}
+        <section id="productos" class="misProductos noArticulos">
+            <p>{{values.TEXTS.sinProductos}}</p>
+            <p class="enlace"><a href="{{app.path}}/producto/nuevo">{{values.TEXTS.creeProductos}}</a></p>
+        </section>    
+    {% endif %}
+{% endblock %}

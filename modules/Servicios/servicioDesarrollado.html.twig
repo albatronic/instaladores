@@ -1,0 +1,31 @@
+{% extends layout %}
+
+{% block navegacion %}{% include '_global/navegacionGeneral.html.twig' %}{% endblock %}
+
+{% block contenido %}
+
+<section class="contenedorGrande">
+    {% include 'Servicios/servicio.html.twig' %}
+        
+    {% if values.servicio.servicio.ShowDocuments.IDTipo == '1' %}
+        {% include 'Servicios/ficherosAdjuntos.html.twig' %}  
+    {% endif %}
+
+    {% if values.servicio.servicio.ShowRelatedLinks.IDTipo == '1' %}
+        {% include 'Servicios/enlacesRelacionados.html.twig' %}    
+    {% endif %}    
+
+    {% if values.servicio.servicio.ShowGalery.IDTipo == '1' %}
+        {% include 'Servicios/galeria.html.twig' %}   
+    {% endif %}        
+
+
+    <article class="botonera">
+        <a href="javascript:history.back()" title="{{values.LABELS.volverAtras}}" class="sprite">{{values.LABELS.volverAtras}}</a>
+    </article>
+</section>   
+{% endblock %}
+
+{% block bannerPie %}
+    {% include '_global/bannerPie.html.twig' %}   
+{% endblock %}

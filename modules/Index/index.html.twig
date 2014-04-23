@@ -1,0 +1,68 @@
+{% extends layout %}
+
+{% block navegacion %}{% include 'Index/navegacion.html.twig' %}{% endblock %}
+
+{% block contenido %}
+<div class="central">
+    <h2><span>{{values.LABELS.noticias}} </span>{{values.LABELS.deActualidad}}</h2>
+
+    <section id="noticias">
+        {% for noticia in values.noticia.rows %}
+        <article>
+            {% if noticia.PathNameImagenN %}
+            <figure>
+                <a href="{{noticia.Href.url}}" {%if noticia.Href.targetBlank%}target="_blank"{%endif%} title="{{noticia.Titulo}}">
+                    <img src="{{app.path}}/{{noticia.PathNameImagenN(1)}}" title="{{noticia.Titulo}}" alt="{{noticia.Titulo}}" />
+                </a>
+            </figure>
+            {% endif %}
+            <div class="info">
+                <h3><a href="{{noticia.Href.url}}" {%if noticia.Href.targetBlank%}target="_blank"{%endif%} title="{{noticia.Titulo}}">{{noticia.Titulo}}</a></h3>
+                <div class="resumen">{{noticia.Resumen}}</div>
+                <article class="botonera">
+                    <span class="fecha"><span class="sprite"></span>{{noticia.PublishedAt|date('d/m/Y')}}</span>
+                    <a  href="{{noticia.Href.url}}" {%if noticia.Href.targetBlank%}target="_blank"{%endif%} title="{{values.LABELS.saberMas}}" class="saberMas">{{values.LABELS.saberMas}}
+                        <span class="sprite"></span>
+                    </a>
+                </article>
+            </div>
+        </article>
+        {% endfor %}
+
+        <!-- <article>
+                <figure>
+                        <a href="" title=""><img src="http://lorempixel.com/200/150" title="" alt="" /></a>
+                </figure>
+                <div class="info">
+                        <h3><a href="" title="">Donec scelerisque nibh dignissim augue feugiat, at varius augue tempor. </a></h3>
+                        <div class="resumen">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque nibh dignissim augue feugiat, at varius augue tempor. </div>
+                        <article class="botonera">
+                                <span class="fecha"><span class="sprite"></span>17/07/2013</span>
+                                <a href="" title="{{values.LABELS.saberMas}}" class="saberMas">{{values.LABELS.saberMas}}<span class="sprite"></span></a>
+                        </article>
+                </div>
+        </article>
+
+        <article>
+                <figure>
+                        <a href="" title=""><img src="http://lorempixel.com/200/150" title="" alt="" /></a>
+                </figure>
+                <div class="info">
+                        <h3><a href="" title="">Donec scelerisque nibh dignissim augue feugiat, at varius augue tempor. </a></h3>
+                        <div class="resumen">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque nibh dignissim augue feugiat, at varius augue tempor. </div>
+                        <article class="botonera">
+                                <span class="fecha"><span class="sprite"></span>17/07/2013</span>
+                                <a href="" title="{{values.LABELS.saberMas}}" class="saberMas">{{values.LABELS.saberMas}}<span class="sprite"></span></a>
+                        </article>
+                </div>
+        </article>	 -->
+
+        <article class="botonera">
+            <a href="{{app.path}}/noticias" class="fondoRojo" title="{{values.LABELS.masNoticias}}">{{values.LABELS.masNoticias}}</a>
+        </article>			
+    </section>
+</div>
+
+{% include 'Index/asideIndex.html.twig' %}
+{% endblock %}
+

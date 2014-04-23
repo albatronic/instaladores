@@ -1,0 +1,23 @@
+{# Productos destacados #}
+
+<section id="articulosDestacados">
+    <span class="superTitular">{{values.LABELS.articulosDestacados}}</span>
+
+    {# ARTICULOS DE LA ZONA 0 #}
+    {% for keyArticulo,articulo in values.articulosDestacados.0 %}
+    <article>
+        <a href="{{ articulo.Href.url }}" {% if articulo.IDEstado1.IDTipo==articulo.IDEstado1.IDTipo %}class="nuevo"{% endif %}>
+            <img src="{{app.path}}/{{articulo.PathNameImagenN(2)}}" alt="{{ articulo.Descripcion }}" title="{{ articulo.Descripcion }}">
+        </a>
+        <h6><a href="{{ articulo.Href.url }}">{{ macro.recortaTexto (articulo.Descripcion, 25) }}</a></h6>
+        {% if articulo.Resumen %}
+            <p>{{ macro.recortaTexto(articulo.Resumen,50)}}</p>
+        {% endif %}
+        {% if articulo.PvpAnterior > 0 %}
+            <span class="precioAnterior">{{ macro.moneda(articulo.PvpAnterior) }}</span>
+        {% endif %}
+        <span class="precioFinal">{{ macro.moneda(articulo.PrecioVentaConImpuestos) }}</span>
+        <a href="{{ articulo.Href.url }}" class="saberMas"></a>
+    </article>
+    {% endfor %}						
+</section>

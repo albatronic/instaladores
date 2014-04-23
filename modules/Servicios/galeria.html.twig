@@ -1,0 +1,18 @@
+{% set nThumbnail = values.servicio.galeriaFotos.bloqueThumbnail|length %}
+{% set key = values.servicio.PrimaryKeyValue %}
+{% if nThumbnail > 0 %}
+<h6 class="baseColor bold">{{values.LABELS.galeriaFotos}}</h6>   
+<section class="cajaGris borderTopNegro">
+    <ul class="galeria">
+        {% for galeria in values.servicio.galeriaFotos.bloqueThumbnail %}
+            <li>
+                <a href="{{app.path}}/{{galeria.PathName}}" rel="gallery" class="pirobox_gall{{key}}" title="{{galeria.Title}}"><img src="{{app.path}}/{{galeria.PathNameThumbnail}}" alt="{{galeria.Title}}" title="{{galeria.Title}}" /></a>
+            </li>
+        {% endfor %} 
+    </ul>
+
+    {% for galeria in values.servicio.galeriaFotos.restoImagenes %}
+        <a href="{{app.path}}/{{galeria.PathName}}" rel="gallery" class="pirobox_gall{{key}}" title="{{galeria.Title}}"></a>
+    {% endfor %}
+</section>
+{% endif %}

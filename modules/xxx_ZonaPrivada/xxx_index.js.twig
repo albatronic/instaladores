@@ -1,0 +1,65 @@
+<script type="text/javascript" src="{{app.path}}/js/jquery-1.8.2.min.js"></script> {# LLAMADA A JQUERY #}
+<script type="text/javascript" src="{{app.path}}/js/select.js"></script> {# SELECT #}
+ <script type="text/javascript">
+       $(function() {
+        $(".image").click(function() {
+        var image = $(this).attr("rel");
+        $('#image').hide();
+        $('#image').fadeIn('slow');
+        $('#image').html('<img src="' + image + '"/>');
+      return false;
+        });
+      });
+  
+    $(function(){
+        $('#radio3').click(function(){
+            $('#particular').css('display','block');
+            $('#profesional').css('display','none');            
+        });
+        $('#radio4').click(function(){
+            $('#particular').css('display','none');
+            $('#profesional').css('display','block');            
+        });  
+        
+        $('#repitePassword').blur(function(){
+            if (this.value != $('#password').val()) {
+                $('#repitePassword').addClass('celdaError');
+            } else {
+                $('#repitePassword').removeClass('celdaError');                
+                $('#repitePassword').addClass('celda');                
+            }
+        });
+    });
+</script>
+
+  <script src="{{app.path}}/js/jquery.placeholder.min.js"></script> <!-- PLACEHOLDER, SOLO SE INVOCA SI EL NAVEGADOR ES ANTIGUO -->
+  <script>
+   $(function() {
+    $('input, textarea').placeholder();
+   });
+  </script> <!-- PLACEHOLDER -->
+
+<script type="text/javascript" src="{{app.path}}/js/pirobox_extended.js"></script>
+<script type="text/javascript" src="{{app.path}}/js/pirobox_function.js"></script>  {# pirobox #}
+
+<script type="text/javascript" src="{{app.path}}/js/jquery-uniform-formulario.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        $(":checkbox, :radio").uniform();
+    });
+</script>  {# SPRITES PARA FORMULARIO #}
+
+<script type="text/javascript">
+		jQuery(document).ready(function($){
+	
+	$("a[rel='pop-up']").click(function () {
+	var caracteristicas = "height="+(screen.availHeight - 40)+",width="+(screen.availWidth - 13)+",screenX=0,screenY=0,left=0,top=0,status=no,menubar=yes,scrollbars=yes,resizable=yes,toolbar=yes,location=yes";
+	nueva=window.open(this.href, 'Popup', caracteristicas);
+	return false;
+	});
+
+
+});
+</script> {# POP UP #}
+
+<script src="http://use.edgefonts.net/nixie-one.js"></script>

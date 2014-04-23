@@ -1,0 +1,26 @@
+{% extends layout %}
+
+{% block navegacion %}{% include '_global/navegacionGeneral.html.twig' %}{% endblock %}
+
+
+{% block contenido %}
+<section class="contenedorGrandeCentral">
+    <h1>{{values.TEXTS.olvidoContraseña}}</h1>
+    {% if values.errores | length == 0 %}    
+    <p>{{values.TEXTS.textoOlvido}}</p>
+
+        <article class="colDrcha">    	                                
+                {% include 'ZonaPrivada/formularioOlvido.html.twig' %}
+        </article>
+    {% else %}
+        <article class="colIz">
+
+        </article>
+
+        <article class="colDrcha">    	                                
+            {% include 'ZonaPrivada/mensajes.html.twig' %}
+        </article>    
+    {% endif %}
+</section>
+{% endblock %}
+

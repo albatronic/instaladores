@@ -1,0 +1,15 @@
+{% extends layout %}
+
+{% block navegacion %}{% include '_global/navegacionGeneral.html.twig' %}{% endblock %}
+
+{% block contenido %}
+<section id="mensaje404">
+    <img src="{{app.path}}/images/aspa.png" alt="Error 404" title="Error 404" />
+    <p>&iexcl;Lo sentimos!<br />No hemos podido localizar la p&aacute;gina.</p>
+    <p class="exito">Si navegas con los men&uacute;s que te ofrecemos aqu&iacute; puede que encuentres lo que buscas</p>
+</section>
+{% endblock %}
+
+{% block bannerPie %}
+    {% include '_global/bannerPie.html.twig' %}   
+{% endblock %}

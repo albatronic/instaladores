@@ -1,0 +1,10 @@
+<form name="formOlvido" id="formOlvido" method="POST" action="">
+    <div id="input_oculto">
+        <input type="text" name="controller" value="{{values.controller}}" />
+        <input type="text" name="action" value="Olvido" />
+    </div>
+
+        <input type="text" name="campos[email][valor]" value="{{values.campos.email.valor}}" class="celdaS{% if values.campos.email.error %}Error{%endif%} celda celdaS" placeholder="E-mail" />
+
+        <input type="submit" title="{{values.LABELS.enviar}}" class="boton btn_azul right" value="{{values.LABELS.enviar}}" />
+</form>

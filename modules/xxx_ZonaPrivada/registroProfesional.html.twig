@@ -1,0 +1,57 @@
+<section class="width100x100 marginTop40">
+    <h3 class="titularGrande">{{values.TEXTS.datosEmpresa}}</h3>
+    <article class="cont90 marginRight30">
+        <label>{{values.TEXTS.nombreEmpresa}}</label>
+        <input type="text" name="registro[Pro][RazonSocial]" value="{{values.registro.Pro.RazonSocial}}" class="celda celda90" />
+    </article>
+
+    <article class="cont50 marginRight30">
+        <label>{{values.TEXTS.direccion}}</label>
+        <input type="text" name="registro[Pro][Direccion]" value="{{values.registro.Pro.Direccion}}" class="celda celda50" />
+    </article>
+
+    <article class="cont5 marginRight30">
+        <label>{{values.TEXTS.cp}}</label>
+        <input type="text" name="registro[Pro][CodigoPostal]" value="{{values.registro.Pro.CodigoPostal}}" class="celda celda5" />
+    </article> 
+
+    <article class="cont30">
+        <label>{{values.TEXTS.provincia}}</label>
+        <select name="registro[Pro][IDProvincia]" class="select celda celda30">
+            {% for provincia in values.provincias %}
+                <option value="{{provincia.Id}}" {%if values.registro.Pro.IDProvincia==provincia.Id%} SELECTED{%endif%}>{{provincia.Value}}</option>
+            {% endfor %}
+        </select>
+    </article>         
+</section> 
+
+<section class="width100x100">
+    <article class="cont906">
+        <label>{{values.TEXTS.descripcionEmpresa}}</label>
+        <textarea name="registro[Pro][Observations]" class="celda celda886">{{values.registro.Pro.Observations}}</textarea>
+    </article> 
+</section>  
+
+<section class="width100x100">
+    <article class="cont30 marginRight30">
+        <label>{{values.TEXTS.telefono}}</label>
+        <input type="text" name="registro[Pro][Telefono]" value="{{values.registro.Pro.Telefono}}" class="celda celda30" />
+    </article>      
+        
+    <article class="cont90">
+        <label>{{values.TEXTS.web}}</label>
+        <input type="text" name="registro[Pro][Web]" value="{{values.registro.Pro.Web}}" class="celda celda90" />
+    </article>   
+
+</section> 
+
+<section class="width100x100">
+    <article class="cont100">
+                
+    {% if values.logo %}
+        <img src="{{app.path}}/{{values.logo}}"/>
+    {% endif %}
+        <label>{{values.TEXTS.logotipoEmpresa}}</label>
+        <input type="file" name="logoEmpresa" class="celda celda100" />
+    </article>             
+</section> 

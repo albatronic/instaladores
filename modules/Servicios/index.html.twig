@@ -1,0 +1,49 @@
+{% extends layout %}
+
+{% block navegacion %}{% include '_global/navegacionGeneral.html.twig' %}{% endblock %}
+
+{% block aside %}{% include '_global/asideGeneralyHome.html.twig' %}{% endblock %}
+
+{% block contenido %}
+
+<section class="contenedorGrande">
+    {% include '_global/ruta.html.twig' %}
+    {% if values.servicios | length > 0 %}
+        <h1>{{values.LABELS.servicios}}</h1>
+        
+        <section class="noticias">
+            {% for servicio in values.servicios %}
+            <article class="noticia">
+                {% if servicio.PathNameImagenN(1) %}
+                <figure>
+                    <a href="{{appPath}}{{servicio.UrlFriendly}}" title="{{servicio.Titulo}}">
+                        <img src="{{app.path}}/{{servicio.PathNameImagenN(1)}}" title="" alt="" />
+                    </a>
+                </figure>
+                {% endif %}
+                <div class="info">
+                    <h3><a href="{{appPath}}{{servicio.UrlFriendly}}" title="{{servicio.Titulo}}">{{servicio.Titulo}}</a></h3>
+                    <div class="resumen">{{servicio.ResumenBreve}}</div>
+                    <article class="botonera">
+                        {#<span class="fecha"><span class="sprite"></span>{{servicio.PublishedAt|date("d/m/Y")}}</span>#}
+                        <a href="{{appPath}}{{servicio.UrlFriendly}}" title="{{values.LABELS.saberMas}}" class="saberMas right">{{values.LABELS.saberMas}}
+                            <span class="sprite"></span>
+                        </a>
+                    </article>
+                </div>
+            </article>
+            {% endfor %}
+        </section>
+
+        <!-- PAGINACION -->
+        {% include '_global/paginacion.html.twig' %}
+    {% else %}
+        <h1>{{values.LABELS.serviciosNoHay}}</h1>
+    {% endif %}
+</section>   
+{% endblock %}
+
+{% block bannerPie %}
+    {% include '_global/bannerPie.html.twig' %}   
+{% endblock %}
+	

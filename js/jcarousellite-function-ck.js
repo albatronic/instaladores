@@ -1,0 +1,1 @@
+$(function(){$(".newsticker-jcarousellite").jCarouselLite({vertical:!0,hoverPause:!0,auto:6e3,speed:500});$(".newsticker-jcarousellite-pie").jCarouselLite({vertical:!1,hoverPause:!0,auto:6e3,speed:500})});

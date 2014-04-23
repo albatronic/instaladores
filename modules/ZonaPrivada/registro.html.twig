@@ -1,0 +1,12 @@
+{% extends layout %}
+
+{% block menuCabecera %}{% endblock %} 
+
+{% block contenido %}
+<section id="zonaPrivada">
+    <h2 class="superTitular rojo">{{values.TEXTS.registroUsuario}}</h2>
+    {% include 'ZonaPrivada/mensajes.html.twig' %} {# ESTOS SON LOS MENSAJES DE RESPUESTA DEL FORMULARIO #}                                 
+    {% include 'ZonaPrivada/formularioRegistro.html.twig' %} {# ESTE ES EL FORMULARIO DE REGISTRO DE USUARIO #}
+</section>
+{% endblock %}
+

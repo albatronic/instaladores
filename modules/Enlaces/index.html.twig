@@ -1,0 +1,29 @@
+{% extends layout %}
+
+{% block navegacion %}{% include '_global/navegacionGeneral.html.twig' %}{% endblock %}
+
+{% block aside %}{% include '_global/asideGeneralyHome.html.twig' %}{% endblock %}
+
+{% block contenido %}
+
+<section class="contenedorGrande">
+    {% include '_global/ruta.html.twig' %}
+    <h1>{{values.seccion.Titulo}}</h1>
+	<h2 class="subtitulo">{{values.seccion.Subtitulo}}</h2>
+
+	<section class="enlaces">
+        {% for enlace in values.enlaces.enlaces %}
+            <article class="enlaceIndividual">
+                <span class="sprite"></span>
+                <h3>{{enlace.titulo}}</h3>
+                {{macro.link(enlace.url.url,none,enlace.url.url,enlace.url.targetBlank)}}
+            </article>
+        {% endfor %}
+	</section>
+</section>   
+{% endblock %}
+
+{% block bannerPie %}
+    {% include '_global/bannerPie.html.twig' %}   
+{% endblock %}
+	

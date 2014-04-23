@@ -1,0 +1,69 @@
+# ESTIQUETAS ESPAÑOL
+---
+es:
+  accesoPrivado: Ya estoy registrado
+  
+  provincia: Provincia
+  contrasena: Contraseña
+  contrasenaIncorrecta: 'La contraseña indicada es incorrecta. Por favor, vuelva a intentarlo.'
+  cp: C.P.
+  cuentaDeshabilitada: 'Su cuenta de usuario está deshabilitad.'
+  crearCuenta: Crear cuenta
+  creeProductos: Pinche aquí para comenzar a promocionar sus productos
+  
+  datosEmpresa: Datos de la empresa
+  datosUsuario: Datos de usuario
+  descripcionEmpresa: Descrpción de la empresa
+  direccion: Dirección
+  
+  eMail: EMail
+  enviar: Enviar
+  
+  graciasRegistro: Gracias por registrarse con nosotros, revise su correo y complete el registro.
+  guardarCambios: Guardar cambios
+  
+  olvideMiContrasena: Olvidé mi contraseña
+
+  logotipoEmpresa: Logotipo de la Empresa
+  
+  nombreEmpresa: Nombre de la empresa
+  nombreYApellidos: Nombre y apellidos
+  
+  olvidoContraseña: 'Olvidé mi contraseña'
+
+  particular: Particular
+  perfilDeshabilitado: 'El perfil de usuario asociado a su cuenta está deshabilitado.'
+  profesional: Profesional
+  
+  registroTexto1: 'Regístrate para empezar a vender tus productos en unos segundos.'
+  registroTexto2: 'Es GRATIS, tan solo necesitamos tu nombre y tu email y que nos digas si eres particular o profesional.' 
+  registroUsuario: Registro de usuario
+  registrate: Regístrate
+  registrarme: Registrarme
+  repetirContrasena: Repetir contraseña
+  
+  telefono: 'Teléfono (opcional)'
+  textoOlvido: 'Indica tu e-mail y te enviaremos la nueva contraseña.'
+  
+  sesionIniciadaExito: 'Su sesión ha sido iniciada con éxito.'
+  sinProductos: Aún no ha definido productos
+  
+  errorEmailVacio: Debe indicar un email
+  errorEmailExiste: La cuenta de correo indicada ya existe
+  errorPasswordVacio: Debe indicar una contraseña
+  errorPasswordDiferente: Las dos contraseñas no coinciden
+  errorTipoUsuario: Debe indicar el tipo de usuario
+  errorRazonSocial: Debe indicar el nombre o razón social
+  errorTelefono: Debe indicar un teléfono de contacto
+  errorProvincia: Debe indicar la provincia
+  errorDireccion: Debe indicar la dirección
+  errorPoliticaPrivacidad: Debe aceptar la política de privacidad
+
+  exitoRegenerada: Contraseña regenerada, consulte su correo.
+  
+  usuario: Usuario
+  usuarioBlanco: 'No puede dejar el nombre de usuario en blanco. Por favor, vuelva a intentarlo.'
+  usuarioContrasenaBlanco: 'No puede dejar el nombre de usuario y la contraseña en blanco. Por favor, vuelva a intentarlo.'
+  usuarioIncorrecto: 'El nombre de usuario es incorrecto. Por favor, vuelva a intentarlo.'
+
+  web: Web

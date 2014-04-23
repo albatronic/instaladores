@@ -1,0 +1,50 @@
+{% import '_global/macros.html.twig' as macro %}
+
+<!DOCTYPE html>
+<html lang="es-ES">
+    <head>
+        {% include '_global/meta.twig' %}
+        {% include values.archivoCss %}  
+
+        <!-- Para que esté disponible el path de la app en todos los java scripts -->
+        <script type="text/javascript">
+            var appPath = "{{appPath}}";
+            var language = "{{language}}";
+        </script>
+        
+        {% include values.archivoJs %}
+        <!--<script type="text/javascript" src="{{app.path}}/js/AEscripts.js"></script>-->             
+    </head>
+
+    {% block body %}    
+    <body {% block bodyContacto %}{% endblock %}>
+        {% include '_global/header.html.twig' %} {# cabecera #}
+
+        {% block navegacion %}{% endblock %}   {# navegacion en el resto de las paginas #}        
+
+
+        <section class="anchoTotal">
+            <section class="contenedorCentral" id="contenidoPagina">
+                {% block aside %}{% include '_global/asideGenerico.html.twig' %}{% endblock %} 
+
+                {% block contenido %}{% endblock %}             
+            </section>
+        </section>
+                 
+        {% block bannerPie %}{% endblock %}                          
+        {% include '_global/footer.html.twig' %} {# pie #}
+              
+        {% if values._debugMode %}
+            <div style="clear: both;">
+                <pre>{{values._debugValues}}</pre>
+            </div>
+        {% endif %}    
+        
+        <!-- Obtener la resolución del dispositivo de navegación del cliente web -->
+        {% if not chequeadaResolucionVisitante %}
+        <script type="text/javascript">chequeaResolucionVisitante();</script>
+        {% endif %}   
+
+    </body>
+    {% endblock %}
+</html>

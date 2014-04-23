@@ -1,0 +1,29 @@
+<section id="contenidoBlog">
+    {% include 'Contenidos/noticia.html.twig' %}
+        
+    {% if values.contenidoDesarrollado.contenido.ShowDocuments.IDTipo == '1' %}    
+        {% include 'Contenidos/ficherosAdjuntos.html.twig' %}  
+    {% endif %}
+
+    {% if values.contenidoDesarrollado.contenido.ShowRelatedLinks.IDTipo == '1' %}
+        {% include 'Contenidos/enlacesRelacionados.html.twig' %}    
+    {% endif %}    
+
+    {% if values.contenidoDesarrollado.contenido.ShowGalery.IDTipo == '1' %}
+        {% include 'Contenidos/galeria.html.twig' %}   
+    {% endif %}
+
+    <div class="botonera">
+        {% include '_global/share.html.twig' %}
+    </div>
+
+    {% if values.contenidoDesarrollado.contenido.BlogPermitirComentarios.IDTipo == '1' %}
+    <section id="respuestas">
+        {% include 'Blog/mensajesBlog.html.twig' %}
+        {% include 'Blog/formulario.html.twig' %}
+        {% include 'Blog/comentarios.html.twig' %}
+    </section>
+    {% endif %}
+
+    <a href="javascript:history.back()" title="{{values.LABELS.volverAtras}}" class="botonRojo">{{values.LABELS.volverAtras}}</a> {# boton volver atras #}    
+</section>

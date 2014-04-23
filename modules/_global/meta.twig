@@ -1,0 +1,26 @@
+<title>{{ values.meta.webName }} {% block title %} {{ values.meta.title }} {% endblock %}</title>
+<link rel="shortcut icon" href="favicon.ico"/>
+<meta name="Title" content="{{values.meta.title}}"/>
+<meta name="Description" content="{{values.meta.description}}"/>
+<meta name="Keywords" content="'{{values.meta.keyWords}}"/>
+<meta name="Robots" content="all"/>
+<meta name="Author" content="'{{values.meta.author}}"/>
+{% if controller == 'Index' %}
+    <meta name="resource-type" content="Homepage"/>
+    <meta name="doc-type" content="Homepage"/>
+{% endif %}
+<meta name="Classification" content="General"/>
+<meta name="Distribution" content="Global"/>
+<meta http-equiv="Pragma" content="no-cache"/>
+<meta http-equiv="Cache-Control" content="no-cache"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="Revisit-after" content="10 days"/>
+<meta name="robots" content="{% if values.blockRobots == '1' %}noindex,nofollow{%else%}ALL,FOLLOW{%endif%}" />
+<meta name="Googlebot" content="all"/>
+<meta name="geo.region" content="{{values.meta.geoRegion}}"/>
+<meta name="geo.placename" content="{{values.meta.geoPlaceName}}"/>
+{% if values.meta.geoPositionLatitude and values.meta.geoPositionLongitude %}
+    <meta name="geo.position" content="{{values.meta.geoPositionLatitude}};{{values.meta.geoPositionLongitude}}"/>
+    <meta name="ICBM" content="{{values.meta.geoPositionLatitude}}, {{values.meta.geoPositionLongitude}}"/>    
+{% endif %}
+<link href="{{app.path}}/favicon.ico" rel="shortcut icon" hreflang="es" />

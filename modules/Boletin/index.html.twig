@@ -1,0 +1,42 @@
+{% extends layout %}
+
+{% block navegacion %}{% include '_global/navegacionGeneral.html.twig' %}{% endblock %}
+
+{% block aside %}{% include '_global/asideGeneralyHome.html.twig' %}{% endblock %}
+
+{% block contenido %}
+
+<section class="contenedorGrande">
+    {# include '_global/ruta.html.twig' #}
+        <h1>{{values.boletin.boletin.Titulo}}</h1>
+        
+        <section class="noticias">
+            {% for contenido in values.boletin.contenidos %}
+            <article class="noticia">
+                {% if contenido.PathNameImagenN(3) %}
+                <figure>
+                    <a href="{{appPath}}{{contenido.UrlFriendly}}" title="{{contenido.Titulo}}">
+                        <img src="{{app.path}}/{{contenido.PathNameImagenN(3)}}" title="" alt="" />
+                    </a>
+                </figure>
+                {% endif %}
+                <div class="info">
+                    <h3><a href="{{appPath}}{{contenido.UrlFriendly}}" title="{{contenido.Titulo}}">{{contenido.Titulo}}</a></h3>
+                    <div class="resumen">{{contenido.Resumen}}</div>
+                    <article class="botonera">
+                        <span class="fecha"><span class="sprite"></span>{{contenido.PublishedAt|date("d/m/Y")}}</span>
+                        <a href="{{appPath}}{{contenido.UrlFriendly}}" title="{{values.LABELS.saberMas}}" class="saberMas right">{{values.LABELS.saberMas}}
+                            <span class="sprite"></span>
+                        </a>
+                    </article>
+                </div>
+            </article>
+            {% endfor %}
+        </section>
+</section>   
+{% endblock %}
+
+{% block bannerPie %}
+    {% include '_global/bannerPie.html.twig' %}   
+{% endblock %}
+	

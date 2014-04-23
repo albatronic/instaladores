@@ -1,0 +1,40 @@
+<section id="menuNavegacionCabecera" class="anchoTotal fondoBase">
+    <section class="contenedorCentral" id="navegacionTop">
+        <nav class="columna left marginRight50">
+            <ul>
+                {% for opcion in values.menuCabeceraIzq  %}
+                <li><a href="{{opcion.url.url}}">{{opcion.etiquetaWeb}}<span>{{opcion.subetiquetaWeb}}</span></a></li>
+                {% endfor %}
+            </ul>
+        </nav>
+
+        <div class="central">
+          <div id="banner-fade">
+
+            <!-- start Basic Jquery Slider -->
+            <ul class="bjqs">
+                {% for slider in values.sliders %}
+                <li>
+                    <img src="{{app.path}}/{{slider.imagen}}" title="{{slider.titulo}}">
+                    {% if slider.titulo %}
+                    <span class="captionImagen">
+                        {{slider.titulo}}
+                    </span>
+                    {% endif %}
+                </li>
+                {% endfor %}
+            </ul>
+            <!-- end Basic jQuery Slider -->
+
+          </div>            
+        </div>
+
+        <nav class="columna right">
+            <ul>
+                {% for opcion in values.menuCabeceraDcha  %}
+                <li><a href="{{opcion.url.url}}">{{opcion.etiquetaWeb}}<span>{{opcion.subetiquetaWeb}}</span></a></li>
+                {% endfor %}
+            </ul>
+        </nav>            
+    </section>
+</section>

@@ -1,0 +1,49 @@
+<section id="productos" class="misProductos">
+    
+    {% for producto in values.productos.articulos %}    
+    <article>
+        {% if producto.PathNameImagenN(1) %}
+        <a href="{{ producto.Href.url }}" title="{{ producto.Descripcion }}" {% if producto.nuevo==1 %}class="nuevo"{% endif %}><img src="{{app.path}}/{{ producto.PathNameImagenN(1) }}" alt="{{ producto.Descripcion }}" title="{{ producto.Descripcion }}" /></a>
+        {% endif %}
+        <div class="productoInfo {% if not producto.PathNameImagenN(1) %}productoWidth100{% endif %}">
+            {% if producto.PublishedAt %}<span class="fecha">{{ producto.PublishedAt | date('d/m/Y') }}</span>{% endif %}
+            <h2><a href="{{producto.Href.url}}" title="">{{ macro.recortaTexto(producto.Descripcion,20)}}</a></h2>
+            {% if producto.Resumen %}
+            <p>{{ macro.recortaTexto(producto.Resumen,35)}}</p>
+            {% endif %}
+            <span class="precios">
+                {%if producto.PvpAnterior > 0 %}<span class="precioAnterior">{{ macro.moneda(producto.PvpAnterior) }}</span>{%endif%}
+                <span class="precioFinal">{{ macro.moneda(producto.PrecioVentaConImpuestos) }}</span>
+                <a href="{{producto.Href.url}}" class="saberMas" title="{{values.LABELS.saberMas}}"></a>
+            </span>
+        </div>
+    </article> 
+    {% endfor %} 
+
+    <section id="share">
+        
+        {% set paginacion = values.productos.paginacion %}
+        <ul>
+            <li><a class="boton botonGris" href="{{app.path}}{{urlAmigable}}/mis-productos/1" title="{{values.LABELS.primero}}">&laquo;</a></li>            
+            {% if paginacion.pagina > 1 %}
+            <li><a class="boton botonGris" href="{{appPath}}{{urlAmigable}}/mis-productos/{{paginacion.pagina-1}}" title="{{values.LABELS.anterior}}"><</a></li>             
+            {% endif %}
+            
+            {% for page in paginacion.pagina-2..paginacion.pagina+2 %}
+                {% if page == paginacion.pagina %}
+                    <li><a class="boton botonRojo" href="#" title="">{{paginacion.pagina}}</a></li>
+                {% elseif (page>0) and (page<=paginacion.totalPaginas)%}
+                    <li><a class="boton botonGris" href="{{appPath}}{{urlAmigable}}/mis-productos/{{page}}" title="">{{page}}</a></li>                        
+                {% endif %}
+            {% endfor %}
+            
+            {% if paginacion.pagina < paginacion.totalPaginas %}
+            <li><a class="boton botonGris" href="{{appPath}}{{urlAmigable}}/mis-productos/{{paginacion.pagina+1}}" title="{{values.LABELS.siguiente}}">></a></li>
+            {% endif %}            
+            <li><a class="boton botonGris" href="{{app.path}}{{urlAmigable}}/mis-productos/{{paginacion.totalPaginas}}" title="{{values.LABELS.ultimo}}">&raquo;</a></li>
+        </ul> 
+        
+        {% include '_global/share.html.twig' %}
+       
+    </section>
+</section>

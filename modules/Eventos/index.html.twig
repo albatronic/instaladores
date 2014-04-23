@@ -1,0 +1,49 @@
+{% extends layout %}
+
+{% block navegacion %}{% include '_global/navegacionGeneral.html.twig' %}{% endblock %}
+
+{% block aside %}{% include '_global/asideGeneralyHome.html.twig' %}{% endblock %}
+
+{% block contenido %}
+
+<section class="contenedorGrande">
+    {% include '_global/ruta.html.twig' %}
+    {% if values.eventos | length > 0 %}
+        <h1>{{values.LABELS.eventos}}</h1>
+        
+        <section class="noticias">
+            {% for evento in values.eventos %}
+            <article class="noticia">
+                {% if evento.imagen %}
+                <figure>
+                    <a href="{{evento.url.url}}" {%if evento.url.targetBlank%} target="_blank" {%endif%} title="{{evento.titulo}}">
+                        <img src="{{app.path}}/{{evento.imagen}}" title="" alt="" />
+                    </a>
+                </figure>
+                {% endif %}
+                <div class="info">
+                    <h3>{{macro.link(evento.titulo,none,evento.url.url,evento.url.targetBlank)}}</h3>
+                    <div class="resumen">{{evento.resumen}}</div>
+                    <article class="botonera">
+                        <span class="fecha"><span class="sprite"></span>{{evento.fecha|date("d/m/Y")}}</span>
+                        <a href="{{evento.url.url}}" {%if evento.url.targetBlank%} target="_blank" {%endif%} title="{{values.LABELS.saberMas}}" class="saberMas right">{{values.LABELS.saberMas}}
+                            <span class="sprite"></span>
+                        </a>
+                    </article>
+                </div>
+            </article>
+            {% endfor %}
+        </section>
+
+        <!-- PAGINACION -->
+        {# include '_global/paginacion.html.twig' #}
+    {% else %}
+        <h1>{{values.LABELS.eventosNoHay}}</h1>
+    {% endif %}
+</section>   
+{% endblock %}
+
+{% block bannerPie %}
+    {% include '_global/bannerPie.html.twig' %}   
+{% endblock %}
+	

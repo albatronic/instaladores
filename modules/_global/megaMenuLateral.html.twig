@@ -1,0 +1,27 @@
+<nav id="megaMenu">
+    <ul id="nav">
+        {% for categoria in values.menuDerecho %}
+        {% set familias = categoria.familias %}            
+        {% set categoria = categoria.categoria %}
+        <li class="navPrimero"><a href="{{categoria.Href.url}}" title="{{categoria.Familia}}">{{categoria.Familia}}</a>
+            {% if familias | length > 0 %}           
+            <ul>
+                {% for familia in familias %}
+                <li><a href="{{familia.Href.url}}">{{familia.Familia}}</a>
+                    {# MENU DE TERCER NIVEL
+                    {% if subseccion.subsecciones %}            
+                    <ul class="navTercero">
+                        {% for subnivel in subseccion.subsecciones %}
+                        <li><a href="#">{{subnivel.seccion}}</a></li>
+                        {% endfor %}                        
+                    </ul>
+                    {% endif %}  
+                    #}
+                </li>
+                {% endfor %}
+            </ul>  
+            {% endif %}                       
+        </li>      
+        {% endfor %}
+    </ul>
+</nav>

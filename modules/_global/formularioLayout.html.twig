@@ -1,0 +1,38 @@
+{% if values.formContacta.accion == '' %}
+<h3 class="formulario">{{values.LABELS.contactaConNosotros}}</h3>
+<form class="cajetin" name="formEnvio" id="formEnvio" action="" method="POST">
+    <div id="input_oculto">
+    <input name="controller" value="Contacto" />
+    <input name="action" value="Index" />
+    </div>
+
+    <article class="contCelda">
+        <input type="text" name="campos[Nombre][valor]" id="nombre" 
+               value="{{values.formContacta.campos.Nombre.valor}}" placeholder="{{values.LABELS.nombre}}"
+               class="{% if values.formContacta.campos.Nombre.error %}celdaError {% else %}celda{% endif %}" />
+    </article>    
+
+    <article class="contCelda">        
+        <input type="text" name="campos[Email][valor]" id="email" 
+               value="{{values.formContacta.cmapos.Email.valor}}" placeholder="{{values.LABELS.email}}" 
+               class="{% if values.formContacta.campos.Email.error %}celdaError {% else %}celda{% endif %}" />
+    </article>
+
+    <article>        
+        <textarea name="campos[Mensaje][valor]" id="mensaje" placeholder="{{values.LABELS.mensaje}}" 
+                class="{% if values.formContacta.campos.Mensaje.error %}celdaError {% else %}celda{% endif %}" 
+                rows="10" cols="">{{values.formContacta.cmapos.Mensaje.valor}}</textarea>
+    </article>
+
+    <input type="submit" value="{{values.LABELS.enviar}}" class="enviar">
+
+    <div class="{% if values.formContacta.campos.leidoPolitica.error %}checkboxError {% else %}checkbox{% endif %}">
+        <input name="campos[leidoPolitica][valor]" type="checkbox" id="checkbox2" {%if values.formContacta.campos.leidoPolitica.valor == 'on' %} CHECKED{% endif %} />
+        <label class="textoCheckbox" for="checkbox2">{{values.LABELS.acepto}} <a href="{{app.path}}/politica-de-privacidad" rel="iframe-1000-360" class="pirobox" title="{{values.LABELS.condiciones}}">{{values.LABELS.condiciones}}.</a></label>                
+    </div>
+</form>
+{% else %}
+    <div class="mensaje">
+        <div class="{%if values.formContacta.resultado%}exito mensajeEnviado{%else%}error{%endif%}">{{values.formContacta.mensaje}}</div>
+    </div>
+{% endif %}

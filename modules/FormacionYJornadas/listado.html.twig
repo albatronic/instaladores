@@ -1,0 +1,40 @@
+{% extends layout %}
+
+{% block navegacion %}{% include '_global/navegacionGeneral.html.twig' %}{% endblock %}
+
+{% block contenido %}
+
+<section class="contenedorGrande">
+    {% include '_global/ruta.html.twig' %}
+    <h1 class="baseColor">{{values.seccion.titulo}}</h1>
+
+
+    <div id="tabs">
+        <section>
+        {% for contenido in values.seccion.contenidos.contenidos %}
+            {% set urlContenido = contenido.Href.url %}
+            <article>
+                <a href="{{urlContenido}}"><img src="{{app.path}}/{{contenido.getPathNameImagenN(2)}}" alt="{{contenido.Titulo}}"></a>
+                <div class="descripcion">
+                    <h2><a href="{{urlContenido}}">{{macro.recortaTexto(contenido.Titulo,25)}}</a></h2>
+                    <h3>{{macro.recortaTexto(contenido.Subtitulo,38)}}</h3>
+                </div>
+
+                <div class="curso">
+                    <span>aaa{{contenido.getMetaData('Horas_Curso')}}</span>
+                    <a href="{{urlContenido}}" class="right">{{values.LABELS.masInfo}}</a>
+                </div>
+            </article>
+         {% endfor %}
+        </section>
+    </div>
+
+    <!-- PAGINACION -->
+    {% include values.controller ~ '/paginacion.html.twig' %}
+   
+</section>   
+{% endblock %}
+
+{% block bannerPie %}
+    {% include '_global/bannerPie.html.twig' %}   
+{% endblock %}

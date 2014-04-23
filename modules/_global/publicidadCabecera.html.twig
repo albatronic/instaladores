@@ -1,0 +1,33 @@
+<section id="publicidad">
+    <article class="contenedorGlobal">
+
+        <a href="{{values.bannerCabeceraGrande.0.url.url}}" {%if values.bannerCabeceraGrande.0.url.targetBlank == '1'%}target='_blank'{%endif%} title="{{values.bannerCabeceraGrande.0.titulo}}" class="{% if values.bannerCabeceraPequeno|length > 0 %}bannerMed{%endif%}">
+            <img src="{{app.path}}/{{values.bannerCabeceraGrande.0.imagenes.0}}" alt="{{values.bannerCabeceraGrande.0.titulo}}" title="{{values.bannerCabeceraGrande.0.titulo}}">
+        </a>  
+             
+        {% if values.bannerCabeceraPequeno|length > 0 %}
+            <a href="{{values.bannerCabeceraPequeno.0.url.url}}" {%if values.bannerCabeceraPequeno.0.url.targetBlank == '1'%}target='_blank'{%endif%} title="{{values.bannerCabeceraPequeno.0.titulo}}" class="">
+                <img src="{{app.path}}/{{values.bannerCabeceraPequeno.0.imagenes.1}}" alt="{{values.bannerCabeceraPequeno.0.titulo}}" title="{{values.bannerCabeceraPequeno.0.titulo}}">
+            </a>             
+        {% endif %}
+    </article>
+{#      
+    <article class="contenedorGlobal">
+    {% if values.bannerCabecera2|length > 0 %}
+        <a href="{{values.bannerCabecera2.url.url}}" title="{{values.bannerCabecera2.titulo}}" class="bannerMed">
+            <img src="{{app.path}}/{{values.bannerCabecera2.0.imagenes.0}}" alt="{{values.bannerCabecera2.titulo}}" title="{{values.bannerCabecera2.titulo}}">
+        </a> 
+
+        {% if values.bannerCabecera2.1.imagenes.1 %}
+        <a href="{{values.bannerCabecera2.url.url}}" title="{{values.bannerCabecera2.titulo}}">
+            <img src="{{app.path}}/{{values.bannerCabecera2.1.imagenes.1}}" alt="{{values.bannerCabecera2.titulo}}" title="{{values.bannerCabecera2.titulo}}">
+        </a>                  
+        {% endif %}
+    {% else %}
+        <a href="{{values.bannerCabecera1.url.url}}" title="{{values.bannerCabecera1.titulo}}">
+            <img src="{{app.path}}/{{values.bannerCabecera1.0.imagenes.0}}" alt="{{values.bannerCabecera1.titulo}}" title="{{values.bannerCabecera1.titulo}}">
+        </a>  
+    {% endif %}                  
+    </article>  
+#}      
+</section>   

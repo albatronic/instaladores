@@ -1,0 +1,20 @@
+<form name="formOlvido" id="formOlvido" method="POST" action="">
+    <div id="input_oculto">
+        <input type="text" name="controller" value="{{values.controller}}" />
+        <input type="text" name="action" value="Olvido" />
+    </div>
+
+    <article class="cont90">
+        <label>{{values.LABELS.email}}</label>
+        <input type="text" name="campos[email][valor]" value="{{values.campos.email.valor}}" class="celda{% if values.campos.email.error %}Error{%endif%} celda90" />
+    </article>
+
+    <article id="contenedorEnviar">
+        <div class="checkbox{%if values.campos.leidoPolitica.error%}Error{%endif%}"> 
+            <input name="campos[leidoPolitica][valor]" type="checkbox" id="checkbox2" {%if values.campos.leidoPolitica.valor == 'on' %} CHECKED{% endif %} />
+            <label class="textoCheckbox" for="checkbox2">{{values.LABELS.leidoPolitica}} <a href="{{app.path}}/politica-de-privacidad" rel="iframe-1000-360" class="pirobox" title="{{values.LABELS.politicaPrivacidad}}">{{values.LABELS.politicaPrivacidad}}.</a></label>
+        </div>        
+
+        <input type="submit" title="{{values.LABELS.enviar}}" class="botonRojo right" value="{{values.LABELS.enviar}}" />
+    </article>
+</form>

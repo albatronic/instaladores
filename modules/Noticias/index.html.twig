@@ -1,0 +1,49 @@
+{% extends layout %}
+
+{% block navegacion %}{% include '_global/navegacionGeneral.html.twig' %}{% endblock %}
+
+{% block aside %}{% include '_global/asideGeneralyHome.html.twig' %}{% endblock %}
+
+{% block contenido %}
+
+<section class="contenedorGrande">
+    {% include '_global/ruta.html.twig' %}
+    {% if values.noticias.paginacion.totalItems > 0 %}
+        <h1>{{values.LABELS.noticiasActualidad}}</h1>
+        
+        <section class="noticias">
+            {% for noticia in values.noticias.rows %}
+            <article class="noticia">
+                {% if noticia.PathNameImagenN(3) %}
+                <figure>
+                    <a href="{{appPath}}{{noticia.UrlFriendly}}" title="{{noticia.Titulo}}">
+                        <img src="{{app.path}}/{{noticia.PathNameImagenN(3)}}" title="" alt="" />
+                    </a>
+                </figure>
+                {% endif %}
+                <div class="info">
+                    <h3><a href="{{appPath}}{{noticia.UrlFriendly}}" title="{{noticia.Titulo}}">{{noticia.Titulo}}</a></h3>
+                    <div class="resumen">{{noticia.Resumen}}</div>
+                    <article class="botonera">
+                        <span class="fecha"><span class="sprite"></span>{{noticia.PublishedAt|date("d/m/Y")}}</span>
+                        <a href="{{appPath}}{{noticia.UrlFriendly}}" title="{{values.LABELS.saberMas}}" class="saberMas right">{{values.LABELS.saberMas}}
+                            <span class="sprite"></span>
+                        </a>
+                    </article>
+                </div>
+            </article>
+            {% endfor %}
+        </section>
+
+        <!-- PAGINACION -->
+        {% include '_global/paginacion.html.twig' %}
+    {% else %}
+        <h1>{{values.LABELS.noticiasNoHay}}</h1>
+    {% endif %}
+</section>   
+{% endblock %}
+
+{% block bannerPie %}
+    {% include '_global/bannerPie.html.twig' %}   
+{% endblock %}
+	

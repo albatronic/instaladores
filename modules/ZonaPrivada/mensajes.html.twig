@@ -1,0 +1,8 @@
+{% if values.errores | length > 0 %}
+<div class="mensaje">
+    {#<div class="mensajeForm">{{values.TEXTS.sesionIniciadaExito}}</div> #}
+    {% for error in values.errores %}
+        <div>{{values.TEXTS[error]}}</div>
+    {% endfor %}      
+</div>
+{% endif %}

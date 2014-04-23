@@ -1,0 +1,18 @@
+## YAML Template.
+---
+es:
+  codigoPostal: Código Postal
+
+  datosContacto: Datos de contacto
+  
+  electricosYComunicaciones: Eléctricos y Telecomunicaciones
+
+  fontaneriaSaneamiento: Fontanería / Climatización / Gas / ...
+
+  instalador: Instalador
+
+  municipio: Municipio
+  
+  personaContacto: Persona de contacto
+
+  seleccioneMunicipio: Seleccione un municipio o un código postal y encuentre los instaladores más cercanos.

@@ -1,0 +1,35 @@
+{# PARA MOSTRAR LOS LOGOS DE FORMA ALEATORIA #}
+
+{% set logos = {'0':'asociacion-autonoma-instaladores-electricos-telecomunicaciones-granada.png','1':'asociacion-instaladores-granada.png'} %}
+{% set titles = {'0':values.LABELS.asociacionAutonomaInstaladoresElectricosYdeTelecomunicacionesDeGranada,'1':values.LABELS.asociacionInstaladoresGranada} %}
+{% set keyLogo1 = random([0,1]) %}
+{% set keyLogo2 = (keyLogo1 == 1) ? 0: 1 %}
+
+<section class="contenedorCentral">
+    <header>
+        <h1>
+            <a href="{{app.path}}" title="{{titles[keyLogo1]}}">
+                <img src="{{app.path}}/images/{{logos[keyLogo1]}}" title="" alt="">
+            </a>
+        </h1>
+        <h1>
+            <a href="{{app.path}}" title="{{titles[keyLogo2]}}">
+                <img src="{{app.path}}/images/{{logos[keyLogo2]}}" title="" alt="">
+            </a>
+        </h1>
+
+        <article id="acceso">
+            <article id="telefono"><span class="sprite"></span>{{values.datosContacto.telefono1}}</article>
+            <article id="accesoIdentificado">
+                {% if user.Id > 0 %}
+                    <span>{{user.nombre}}</span><br/>
+                    <a href="{{app.path}}/salir">{{values.LABELS.cerrarSesion}}</a>
+                {% else %}
+                    <span class="sprite"></span>
+                    <a href="{{app.path}}/zona-privada" title="Acceso Identificado">{{values.LABELS.accesoIdentificado}}</a>
+                    <span>{{values.LABELS.informacionPersonalizada}}</span>                    
+                {% endif %}
+            </article>
+        </article>
+    </header>
+</section>

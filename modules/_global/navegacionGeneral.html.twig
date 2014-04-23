@@ -1,0 +1,11 @@
+<section id="navegacionGeneral" class="anchoTotal fondoBase">
+    <nav class="contenedorCentral">
+        <ul>
+            {% for menuCabecera in values.menuCabeceraGeneral  %}
+            <li><a href="{{menuCabecera.url.url}}">{{menuCabecera.etiquetaWeb}}
+                <span>{{menuCabecera.subetiquetaWeb}}</span></a>   
+            </li>
+            {% endfor %}
+        </ul>
+    </nav>
+</section>

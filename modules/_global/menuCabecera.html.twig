@@ -1,0 +1,22 @@
+<nav id="cabecera">
+    <ul id="navCabecera">
+        <li>
+            <a href="{{app.path}}/" title="{{values.LABELS.inicio}}">
+                <img src="{{app.path}}/images/home.png" alt="{{values.LABELS.inicio}}" title="{{values.LABELS.inicio}}">
+            </a>
+        </li>        
+        {% for categoria in values.menuCategorias %}
+        {% set familias = categoria.familias %}            
+        {% set categoria = categoria.categoria %}
+        <li class="cabeceraPrimero {% if urlAmigable == "/" ~ categoria.Href.url %}activo{% endif %}"><a href="{{categoria.Href.url}}">{{categoria.Familia}}</a>       
+            {% if familias | length > 0 %}
+            <ul>
+                {% for familia in familias %}
+                <li><a href="{{familia.Href.url}}">{{familia.Familia}}</a></li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+</nav>

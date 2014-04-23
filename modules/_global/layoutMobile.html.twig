@@ -1,0 +1,62 @@
+{% import '_global/macros.html.twig' as macro %}
+
+<!DOCTYPE html>
+<html lang="es-ES">
+    <head>
+        {% include '_global/meta.twig' %}
+        {% include values.archivoCss %}          
+    </head>
+
+    {% block body %}    
+    <body {% block bodyContacto %}{% endblock %}>
+        {% include '_global/publicidadCabecera.html.twig' %} {# PUBLICIDAD CABECERA #}       
+
+        <section class="contenedorGlobal">
+            <section id="contenedorCentral">
+                <header>
+                    <{% if urlAmigable == '/' %}h1{% else %}div id="logotipo"{% endif %}>
+                        <a href="{{app.path}}" title="{{values.datosContacto.empresa}}">
+                            <img src="{{app.path}}/images/vendo-camara.png" alt="{{values.datosContacto.empresa}}" title="{{values.datosContacto.empresa}}" />
+                            <span class="widthTotal">
+                                <span class="filete"></span>
+                                    <span>{{values.LABELS.ventaDeMaterialFotograficoDeSegundaMano}}</span>
+                                <span class="filete"></span>
+                            </span>
+                        </a>    
+                    <{% if urlAmigable == '/' %}/h1{% else %}/div{% endif %}>
+                    
+                    {% block menuCabecera %}
+                        {% include '_global/menuCabecera.html.twig' %}
+                    {% endblock %}    
+                </header>
+                
+                {% block contenido %}{% endblock %}
+            </section>
+                                
+            {% include '_global/aside.html.twig' %}                
+            {% include '_global/footer.html.twig' %}    
+
+        </section>        
+                                  
+        {% if values._debugMode %}
+            <div style="clear: both;">
+                <pre>{{values._debugValues}}</pre>
+            </div>
+        {% endif %}     
+
+        <!-- Para que esté disponible el path de la app en todos los java scripts -->
+        <script type="text/javascript">
+            var appPath = "{{appPath}}";
+            var language = "{{language}}";
+        </script>
+        
+        {% include values.archivoJs %}
+        <script type="text/javascript" src="{{app.path}}/js/AEscripts.js"></script> 
+        
+        <!-- Obtener la resolución del dispositivo de navegación del cliente web -->
+        {% if not chequeadaResolucionVisitante %}
+        <script type="text/javascript">chequeaResolucionVisitante();</script>
+        {% endif %}               
+    </body>
+    {% endblock %}
+</html>

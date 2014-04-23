@@ -1,0 +1,41 @@
+<section class="bannerPie">
+    <div id="newsticker-demo" class="contenedorCentral">    
+        {% set nBanner=values.banners|length %}
+        {% if nBanner<=5 %}
+                <ul>
+                    {% for banner in values.banners %}
+                    <li>
+                        <div class="thumbnailBanner">
+                        {% if banner.url.url %}
+                            <a href="{{banner.url.url}}" title="{{banner.titulo}}" rel="pop-up">
+                        {% endif %}
+                            <img src="{{app.path}}/{{banner.imagenes[0]}}" title="{{banner.nombre}}" alt="{{banner.nombre|date('')}}" />
+                        {% if banner.url.url %}
+                            </a>
+                        {% endif %} 
+                        </div>
+                    </li>
+                    {% endfor %}
+
+                </ul>        
+        {% else %}         
+        <div class="newsticker-jcarousellite-pie">
+            <ul>
+                {% for banner in values.banners %}
+                <li>
+                    <div class="thumbnail">
+                        {% if banner.url.url %}
+                            <a href="{{banner.url.url}}" title="{{banner.titulo}}" rel="pop-up">
+                        {% endif %}
+                            <img src="{{app.path}}/{{banner.imagenes[0]}}" title="{{banner.titulo}}" alt="{{banner.titulo}}" />
+                        {% if banner.url.url %}
+                            </a>
+                        {% endif %}                            
+                    </div>
+                </li>  
+                {% endfor %}                                                                                                                                             
+            </ul>
+        </div>
+    </div>	
+    {% endif %}
+</section>

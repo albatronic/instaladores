@@ -1,0 +1,32 @@
+{#
+
+    MUESTRA CALENDARIO DE EVENTOS,NOTICIAS,BLOG
+    SEGUN EL PARAMETRO "tipo"
+
+    DEPENDENCIAS:
+
+        css/calendario.css
+        js/AEscripts.js
+        lib/calendario.php
+        
+#}
+<div id="contenedor_calendario">
+    <input name="mesActual" id="calendarioMesActual" value="{{values.calendario.mesNumero}}" type="hidden" />
+    <input name="anoActual" id="calendarioAnoActual" value="{{values.calendario.ano}}" type="hidden" />
+    <input name="tipo" id="calendarioTipo" value="{{values.calendario.tipo}}" type="hidden" />
+        
+    <div id="borde_sup_calendario" class="botonRojo">
+        <img id="calendarioBotonAnterior" src="{{app.path}}/images/flecha-izq-calendario.png" class="left puntero" alt="Mes Anterior" title="Mes Anterior" />
+	<span id="calendarioTextoMes" class="mes_year">{{values.calendario.mesTexto}} {{values.calendario.ano}}</span>
+        <img id="calendarioBotonSiguiente" src="{{app.path}}/images/flecha-der-calendario.png" class="right puntero" alt="Mes Siguiente" title="Mes Siguiente" />
+
+    </div>
+    
+    <div id='calendarioTablaDias'>
+        {% autoescape false %}
+        {{values.calendario.calendario}}
+        {% endautoescape %}
+    </div>    
+    
+    <div id='borde_inf_calendario'>&nbsp;</div>
+</div>

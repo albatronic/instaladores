@@ -1,0 +1,16 @@
+{% extends layout %}
+
+{% block navegacion %}{% include '_global/navegacionGeneral.html.twig' %}{% endblock %}
+
+
+{% block contenido %}
+<section class="contenedorGrandeCentral">
+    <article class="colDrcha">
+        <h1>{{values.TEXTS.accesoPrivado}}</h1>
+        <p>{{values.TEXTS.accesoPrivadoTexto}}</p>
+                                 
+        {% include 'ZonaPrivada/login.html.twig' %} {# ESTE ES EL FORMULARIO DE ACCESO A ZONA PRIVADA #}
+    </article>     
+</section>
+{% endblock %}
+

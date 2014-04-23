@@ -1,0 +1,35 @@
+<div class="contenedorNoticia">
+    {% set servicio = values.servicio.servicio %}    
+
+    {% if servicio.ShowPublishedAt.IDTipo == '1' %}
+        <span class="fecha width100">
+            Publicado: {{servicio.PublishedAt | date("d/m/Y")}}
+            {#
+            <span class="comentarios">
+                <a href="" title="20 {{values.LABELS.comentarios}}">20</a>
+            </span>
+            #}
+        </span>
+    {% endif %}
+
+    <h1>{{servicio.Titulo}}</h1>
+
+    {% if (servicio.Subtitulo) %}
+        <h2>{{servicio.Subtitulo}}</h2>
+    {% endif %}
+
+    {% if (servicio.ResumenBreve) %}
+        <h3>{{servicio.ResumenBreve}}</h3>
+    {% endif %}
+
+    {% if servicio.Resumen %}
+	<p>{% autoescape false%}{{servicio.Resumen}}{% endautoescape%}</p>
+    {% endif %}
+
+    {% if servicio.videoYoutube.video!="" %}
+    <div class="videos_youtube">
+        <iframe width="{{servicio.videoYoutube.ancho}}" height="{{servicio.videoYoutube.alto}}" src="http://www.youtube.com/embed/{{servicio.videoYoutube.video}}" frameborder="{{servicio.videoYoutube.anchoBorde}}"></iframe>
+    </div>
+    {% endif %}
+      
+</div>

@@ -1,0 +1,69 @@
+<form name="formRegistro" id="formRegistro" method="POST" enctype="multipart/form-data" action="">
+    <div id="input_oculto">
+        <input name="controller" value="ZonaPrivada" />
+        <input name="action" id="action" value="registro" />
+        <input name="accion" id="accion" value="" />
+        <input name="registro[IDCliente]" value="{{values.registro.IDCliente}}" />
+    </div>
+    
+    <section class="width100x100">
+        <article class="cont90 marginRight40">
+            <label>{{values.TEXTS.eMail}}</label>
+            <input type="text" id="email" name="registro[EMail]" value="{{values.registro.EMail}}" class="celda celda90" {%if values.registro.IDCliente%}readonly{%endif%}/>
+        </article>
+
+        <article class="cont50 marginRight40">
+            <label>{{values.TEXTS.contrasena}}</label>
+            <input type="password" id="password" name="registro[Password]" value="{{values.registro.Password}}" class="celda celda50" />
+        </article>
+
+        <article class="cont50">
+            <label>{{values.TEXTS.repetirContrasena}}</label>
+            <input type="password" id="repitePassword" name="repitePassword" class="celda celda50" />
+        </article>  
+    </section>        
+   
+    <section class="width100x100">
+        {% if values.registro.IDTipo == '' or values.registro.IDTipo == '1' %}
+        <div class="cont50 left">
+            <input name="registro[IDTipo]" value="1" type="radio" id="radio3" {% if values.registro.IDTipo=='1' %} checked{%endif%} />
+            <label class="celda40" for="radio3">{{values.TEXTS.particular}}</label>
+        </div>
+        {% endif %}
+
+        {% if values.registro.IDTipo == '' or values.registro.IDTipo == '2' %}
+        <div class="cont50 left">
+            <input name="registro[IDTipo]" value="2" type="radio" id="radio4" {% if values.registro.IDTipo=='2' %} checked{%endif%} />
+            <label class="celda40" for="radio4">{{values.TEXTS.profesional}}</label>
+        </div> 
+        {% endif %}            
+    </section> 
+
+     
+        
+    {# SI EL USUARIO MARCA EL RADIO PARTICULAR SE MOSTRARÁ EL FORMULARIO DATOS USUARIO,
+    ## EN CASO COTRARIO SE MOSTRARÁ EL FORMULARIO DATOS EMPRESA.
+    #}      
+    <div id="particular" {%if values.registro.IDTipo == '1'%} class="visible"{% endif %}>
+        {% include 'ZonaPrivada/registroParticular.html.twig' %} {# FORMULARIO DATOS USUARIO #}
+    </div>
+    <div id="profesional" {%if values.registro.IDTipo == '2'%} class="visible"{% endif %}>
+        {% include 'ZonaPrivada/registroProfesional.html.twig' %} {# FORMULARIO DATOS PROFESIONAL #}
+    </div>
+          
+    <div id="contenedorEnviar">
+        <div class="checkbox">
+            <input name="registro[leidoPolitica]" type="checkbox" id="checkbox2" {%if values.registro.leidoPolitica == 'on' %} CHECKED{% endif %} />
+            <label class="textoCheckbox" for="checkbox2">{{values.LABELS.leidoPolitica}} <a href="{{app.path}}/politica-de-privacidad" rel="iframe-1000-360" class="pirobox" title="{{values.LABELS.politicaPrivacidad}}">{{values.LABELS.politicaPrivacidad}}.</a></label>                
+        </div>
+    </div>
+        
+    <article class="botonera marginTop20">
+        {#<a href="javascript:history.back()" class="botonRojo left">{{values.LABELS.volverAtras}}</a>#}
+        {% if values.registro.IDCliente == ''%}
+        <a href="#" data-type="submit" onclick="$('#accion').val('crear');$('#formRegistro').submit();" title="{{values.TEXTS.crearCuenta}}" class="botonNaranja right">{{values.TEXTS.crearCuenta}}</a>
+        {% else %}
+        <a href="#" data-type="submit" onclick="$('#accion').val('guardar');$('#formRegistro').submit();" title="{{values.TEXTS.guardarCambios}}" class="botonNaranja right">{{values.TEXTS.guardarCambios}}</a>
+        {% endif %}
+    </article>
+</form>

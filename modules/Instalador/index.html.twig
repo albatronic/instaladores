@@ -1,0 +1,88 @@
+{% extends layout %}
+
+{% block navegacion %}{% include '_global/navegacionGeneral.html.twig' %}{% endblock %}
+
+{% block aside %}{% include '_global/asideGeneralyHome.html.twig' %}{% endblock %}
+
+{% block contenido %}
+
+<section class="contenedorGrande">
+    {% include '_global/ruta.html.twig' %}
+    <h1 class="baseColor textAlignCenter">{{values.LABELS.encuentreInstalador}}</h1>
+    <h2 class="subtitulo">{{values.TEXTS.seleccioneMunicipio}}</h2>
+
+    <div class="selectores">
+        <form name="formBusqueda1" method="POST" action="" class="col450 left">
+            <div id="input_oculto">
+            <input name="controller" value="{{values.controller}}" />
+            <input name="action" value="Index" />
+            </div>
+            <select name="idMunicipio" id="">
+                <option value="">{{values.TEXTS.municipio}}</option>
+                {% for municipio in values.municipios %}
+                <option value="{{municipio.Id}}" {%if municipio.Id==values.idMunicipio%} SELECTED{%endif%}>{{municipio.Municipio}}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="{{values.LABELS.buscar}}">
+        </form>
+
+        <form name="formBusqueda2" method="POST" action="" class="col450 right">
+            <div id="input_oculto">
+            <input name="controller" value="{{values.controller}}" />
+            <input name="action" value="Index" />
+            </div>            
+            <select name="codigoPostal" id="">
+                <option value="">{{values.TEXTS.codigoPostal}}</option>
+                {% for cp in values.codigosPostales %}
+                <option value="{{cp.Id}}" {%if cp.Id==values.codigoPostal%} SELECTED{%endif%}>{{cp.Id}}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="{{values.LABELS.buscar}}">
+        </form>
+    </div>
+
+    <!-- COLUMNA IZQUIERDA ELECTRICISTAS -->
+    <section class="col450 left">
+        <h3>{{values.TEXTS.electricosYComunicaciones}}</h3>
+        <table>
+            <tr>
+                <th>{{values.TEXTS.municipio}}</th>
+                <th>{{values.TEXTS.instalador}}</th>
+            </tr>
+            {% for item in values.electricistas %}
+            <tr>
+                <td>{{item.IdMunicipio.Municipio|capitalize}}</td>
+                <td><a href="{{item.Href.url}}">{{item.RazonSocial|capitalize}}</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </section>
+
+
+    <!-- COLUMNA DERECHA FONTANEROS -->
+    <section class="col450 right">
+        <h3>{{values.TEXTS.fontaneriaSaneamiento}}</h3>
+        <table>
+            <tr>
+                <th>{{values.TEXTS.municipio}}</th>
+                <th>{{values.TEXTS.instalador}}</th>
+            </tr>
+            {% for item in values.fontaneros %}
+            <tr>
+                <td>{{item.IdMunicipio.Municipio|capitalize}}</td>
+                <td><a href="{{item.Href.url}}">{{item.RazonSocial|capitalize}}</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </section>
+
+
+    <!-- PAGINACION -->
+    {% include '_global/paginacion.html.twig' %}
+</section>   
+{% endblock %}
+
+{% block bannerPie %}
+    {% include '_global/bannerPie.html.twig' %}   
+{% endblock %}
+	
