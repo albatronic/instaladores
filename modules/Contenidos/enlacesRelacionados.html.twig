@@ -1,10 +1,10 @@
 
-{% set nEnlaces = values.servicio.enlacesRelacionados.enlaces|length %}
+{% set nEnlaces = values.contenidoDesarrollado.enlacesRelacionados.enlaces|length %}
 
 {% if nEnlaces > 0 %}
 <h6 class="azul bold">{{values.LABELS.enlacesRelacionados}}</h6>    
 <section class="enlaces">
-    {% for key,enlace in values.servicio.enlacesRelacionados.enlaces %}
+    {% for key,enlace in values.contenidoDesarrollado.enlacesRelacionados.enlaces %}
         <article class="enlaceIndividual">   
             <span class="sprite"></span>   
             <h3>{{enlace.titulo}}</h3>      

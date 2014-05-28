@@ -11,11 +11,9 @@
     <section id="asociaciones">
         <article id="listado" class="left">
             <ul>
-                <li><a href="{{app.path}}/quienes-somos">{{values.TEXTS.quienesSomos}}</a></li>
-                <li><a href="{{app.path}}/historia">{{values.TEXTS.historia}}</a></li>
-                <li><a href="{{app.path}}/nuestros-objetivos">{{values.TEXTS.nuestrosObjetivos}}</a></li>
-                <li><a href="{{app.path}}/organizacion-y-estructura">{{values.TEXTS.organizacionYEstructura}}</a></li>
-                <li><a href="{{app.path}}/asociate">{{values.TEXTS.asociate}}</a></li>
+                {% for item in values.contenidos.contenidos %}
+                    <li><a href="{{item.Href.url}}">{{item.Titulo}}</a></li>
+                {% endfor %}
             </ul>
             <img src="{{app.path}}/images/bn-aaie.png" alt="{{values.LABELS.asociaciones}}">
             <img src="{{app.path}}/images/bn-aig.png" alt="{{values.LABELS.asociaciones}}">

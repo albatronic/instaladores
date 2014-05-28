@@ -33,7 +33,7 @@
                     <input name="entity" value="{{values.entity}}" />
                     <input name="idEntity" value="{{values.idEntity}}" />
                 </div>
-            <h2>{%if contenido.getMetadata('Formacion_o_Jornadas')=='F'%}{{values.LABELS.inscribeteCurso}}{%else%}{{values.LABELS.inscribeteJornada}}{%endif%}</h2>
+            <h2>{%if contenido.getMetadata('Formacion_o_Jornadas')=='F' %}{{values.LABELS.inscribeteCurso}}{% else %}{{values.LABELS.inscribeteJornada}}{% endif %}</h2>
 
             <input type="text" name="campos[Nombre][valor]" 
                value="{{values.formContacta.campos.Nombre.valor}}" 

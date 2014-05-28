@@ -2,7 +2,7 @@
     {% set nItems = values.ruta | length %}
 
     {% for key,ruta in values.ruta %}
-        <a {% if ruta.url.url != (app.path ~ urlAmigable)%}href="{{ruta.url.url}}{%endif%}">{{ruta.nombre}}</a>
+        <a {% if ruta.url.url != (app.path ~ urlAmigable)%}href="/{{ruta.url.url}}{%endif%}">{{ruta.nombre}}</a>
         {% if key+1 < nItems %}
             <span class="sprite"></span>
         {% endif %}

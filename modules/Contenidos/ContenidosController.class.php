@@ -98,7 +98,7 @@ class ContenidosController extends ControllerProject {
     private function enviaVisitante($mailer, $ficheroPlantilla) {
         $mensaje  = "<p>Confirmación de la solicitud de inscripción a:</p>{$this->values['contenidoDesarrollado']['contenido']->getTitulo()}<br/><br/>";
         $mensaje .= $this->varWeb['Pro']['mail']['mensajeConfirmacion'];
-        
+
         $plantilla = file_get_contents($ficheroPlantilla);
         $plantilla = str_replace("#TITLE#", $this->varWeb['Pro']['meta']['title'], $plantilla);
         $plantilla = str_replace("#DOMINIO#", $this->varWeb['Pro']['globales']['dominio'], $plantilla);

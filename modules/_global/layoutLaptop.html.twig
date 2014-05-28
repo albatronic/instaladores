@@ -18,6 +18,7 @@
 
     {% block body %}    
     <body {% block bodyContacto %}{% endblock %}>
+        {% include '_global/googleAnalytics.js.twig' %}
         {% include '_global/header.html.twig' %} {# cabecera #}
 
         {% block navegacion %}{% endblock %}   {# navegacion en el resto de las paginas #}        

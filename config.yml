@@ -31,12 +31,12 @@ config:
   
   # CONEXIÓN FTP NECESARIA SI LA WEB SUBE DOCUMENTOS AL SERVIDOR
   projectFtp:
-      server: ftp.albatronic.com
+      server: ftp.instaladoresgranada.com
       port: 21
-      user: instaladores@albatronic.com
-      password: I12#34s
+      user: info@instaladoresgranada.com
+      password: I12#34o
       timeout: 30
-      folder: 
+      folder: public_html
       
   # CONTROL DE ACCESO POR IP
   ip_control: true
@@ -46,8 +46,8 @@ config:
   # NORMALMENTE, EN PRODUCCION 'path' estará vacio
   app:
     name: 'Asociación de Instaladores de Granada'
-    url: http://www.albatronic.com/webs/instaladores
-    path: /webs/instaladores
+    url: http://www.instaladoresgranada.com
+    path: 
     framework: bin/albatronic/
 
   # SEMILLA PARA CONSTRUIR CLAVES MD5
@@ -82,7 +82,7 @@ config:
   conections:
     instaladores:
       dbEngine: mysql
-      host: www.albatronic.com
-      user: albatro_instalad
-      password: I12#34d
-      database: albatro_instaladores
+      host: localhost
+      user: insgra_instalado
+      password: I12#34o
+      database: insgra_instaladores

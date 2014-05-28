@@ -6,6 +6,8 @@
 
 {% block contenido %}
 
+{% set logo = values.instalador.getPathNameImagenN(1)%}
+    
 <section class="contenedorGrande">
     {% include '_global/ruta.html.twig' %}
 
@@ -15,7 +17,9 @@
             <img src="{{app.path}}/images/logo{{values.instalador.IdPerfil.Id}}.png" />  
         </article>    
 
-        <img id="logotipoInstalador" src="{{values.instalador.getPathNameImagenN(1)}}"/>        
+        {% if logo != '' %}
+        <img id="logotipoInstalador" src="{{logo}}"/>    
+        {% endif %}
         <article class="contactoInstalador">
             {% if values.instalador.ApellidosNombre %}
             <article class="persona">

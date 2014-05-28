@@ -20,7 +20,7 @@ class InstaladorController extends ControllerProject {
         $usuario = new WebUsuarios();
 
         $this->values['municipios'] = $municipio->cargaCondicion("Id,Municipio", "Id in (select distinct(IdMunicipio) from WebUsuarios where Publish='1')", "Municipio ASC");
-        $this->values['codigosPostales'] = $usuario->cargaCondicion("distinct(CodigoPostal) as Id");
+        $this->values['codigosPostales'] = $usuario->cargaCondicion("distinct(CodigoPostal) as Id","","CodigoPostal ASC");
 
         unset($municipio);
         unset($usuario);
@@ -46,12 +46,14 @@ class InstaladorController extends ControllerProject {
         $eletricistas = array();
         foreach ($rows as $row)
             $eletricistas[] = new WebUsuarios($row['Id']);
-
+        shuffle($eletricistas);
+        
         $rows = $usuario->cargaCondicion("Id", "IdPerfil='3' and {$filtro}", "Apellidos ASC");
         $fontaneros = array();
         foreach ($rows as $row)
             $fontaneros[] = new WebUsuarios($row['Id']);
-
+        shuffle($fontaneros);
+        
         unset($usuario);
         
         $this->values['electricistas'] = $eletricistas;

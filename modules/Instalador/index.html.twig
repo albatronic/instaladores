@@ -52,7 +52,7 @@
             {% for item in values.electricistas %}
             <tr>
                 <td>{{item.IdMunicipio.Municipio|capitalize}}</td>
-                <td><a href="{{item.Href.url}}">{{item.RazonSocial|capitalize}}</a></td>
+                <td><a href="{{item.Href.url}}">{{item.RazonSocial}}</a></td>
             </tr>
             {% endfor %}
         </table>
@@ -70,7 +70,7 @@
             {% for item in values.fontaneros %}
             <tr>
                 <td>{{item.IdMunicipio.Municipio|capitalize}}</td>
-                <td><a href="{{item.Href.url}}">{{item.RazonSocial|capitalize}}</a></td>
+                <td><a href="{{item.Href.url}}">{{item.RazonSocial}}</a></td>
             </tr>
             {% endfor %}
         </table>

@@ -12,6 +12,12 @@ class AsociacionesController extends ControllerProject {
 
     protected $entity = "Asociaciones";
 
+    public function IndexAction() {
+        
+        $this->values['contenidos'] = Contenidos::getContenidosSeccion($this->request['IdEntity']);
+        
+        return parent::IndexAction();
+    }
 }
 
 ?>
