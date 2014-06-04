@@ -38,7 +38,3 @@ a:hover.piro_next{background:url(next.png) center right no-repeat;}
 a.piro_prev{position:absolute;width:20px; right:40px; height:20px; text-indent:-999em; outline:none;display:block;margin:0;background: url(prev.png) center left no-repeat;border:none; cursor:pointer; z-index:150024}
 a:hover.piro_prev{background:url(prev.png) center left no-repeat;}
 a.close_pirobox{color:#bb0f05;}
-
-
-
-

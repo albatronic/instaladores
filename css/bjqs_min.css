@@ -1,0 +1,14 @@
+ul.bjqs{float:left;height:201px!important;position:relative;list-style:none;overflow:hidden;display:none;margin:0;padding:0}
+li.bjqs-slide{position:absolute;display:none}
+ul.bjqs-controls{list-style:none;z-index:9999;margin:0;padding:0}
+ul.bjqs-controls.v-centered li a{position:absolute}
+ul.bjqs-controls.v-centered li.bjqs-next a{right:0}
+ul.bjqs-controls.v-centered li.bjqs-prev a{left:0}
+ol.bjqs-markers{list-style:none;width:100%;margin:0;padding:0}
+ol.bjqs-markers.h-centered{text-align:right}
+ol.bjqs-markers li{display:inline;height:10px;font-size:1px;position:relative;width:10px;margin:0 5px 0 0}
+.captionImagen{background:rgba(120,178,223,0.8);bottom:0;float:right;font-size:16px!important;height:45px;line-height:1.4em;position:absolute;right:0;top:106px;width:400px;padding:25px}
+ol.bjqs-markers li.active-marker a{background:#78b2df;color:#78b2df!important}
+ol.bjqs-markers li a{background:#ddd;color:#ddd!important;border-radius:10px;display:inline-block;height:10px;width:10px;margin:0 5px 0 0}
+p.bjqs-caption{display:block;width:96%;position:absolute;bottom:0;margin:0;padding:2%}
+ul.bjqs li{padding:0!important}

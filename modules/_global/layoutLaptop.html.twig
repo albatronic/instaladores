@@ -12,7 +12,6 @@
             var language = "{{language}}";
         </script>
         
-        {% include values.archivoJs %}
         <!--<script type="text/javascript" src="{{app.path}}/js/AEscripts.js"></script>-->             
     </head>
 
@@ -39,7 +38,9 @@
             <div style="clear: both;">
                 <pre>{{values._debugValues}}</pre>
             </div>
-        {% endif %}    
+        {% endif %} 
+        
+        {% include values.archivoJs %}  
         
         <!-- Obtener la resolución del dispositivo de navegación del cliente web -->
         {% if not chequeadaResolucionVisitante %}

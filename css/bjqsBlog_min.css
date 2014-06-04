@@ -1,0 +1,7 @@
+ul.bjqs{background:#e3e3e3;display:none;float:left;list-style:none;overflow:hidden;position:relative;margin:0;padding:15px}
+ul.bjqs li img{background:#FFF;border-bottom:1px solid #ccc;border-top:1px solid #c2c2c2;-webkit-box-shadow:inset 0 1px 3px 1px rgba(200,200,200,1);box-shadow:inset 0 1px 3px 1px rgba(200,200,200,1);float:left;height:150px;margin-right:20px;width:200px;padding:10px}
+ul.bjqs li a.textoSlider{color:#444;cursor:pointer;float:left;font-size:20px;line-height:1.4em;max-height:150px;margin-top:10px;overflow:hidden;width:290px}
+ul.bjqs li a.textoSlider100{color:#444;cursor:pointer;float:left;font-size:20px;line-height:1.4em;max-height:150px;margin-top:10px;overflow:hidden;width:536px}
+ul.bjqs-controls{float:left;left:-5px;position:relative;top:-45px;width:575px}
+ul.bjqs-controls li.bjqs-prev a{background:url(../images/bjqs-izqda.png) 0 0 no-repeat;float:left;height:49px;width:50px}
+ul.bjqs-controls li.bjqs-next a{background:url(../images/bjqs-drcha.png) 0 0 no-repeat;float:right;height:49px;width:50px}
