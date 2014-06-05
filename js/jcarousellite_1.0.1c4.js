@@ -1,4 +1,4 @@
-(function($) {                                          // Compliant with jquery.noConflict()
+(function($) { 
 $.fn.jCarouselLite = function(o) {
     o = $.extend({
         btnPrev: null,

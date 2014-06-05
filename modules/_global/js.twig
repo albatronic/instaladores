@@ -5,7 +5,7 @@
 
 
 <!-- JQUERY UI -->
-<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script> <!-- jQuery UI -->  
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script> <!-- jQuery UI -->  
   <!-- $(function() {
     $( "#accordion" ).accordion({
       // 'disabled' : true,
@@ -97,39 +97,34 @@
 
 
 
-<script type="text/javascript" src="{{app.path}}/js/pirobox_extended.js"></script>
-<script type="text/javascript" src="{{app.path}}/js/pirobox_function.js"></script>  {# pirobox #}
+<script type="text/javascript" src="{{app.path}}/js/pirobox_extended.min.js"></script>
+<script type="text/javascript" src="{{app.path}}/js/pirobox_function.min.js"></script>  {# pirobox #}
 
-<script src="{{app.path}}/js/AEscripts.js"></script>
+<script src="{{app.path}}/js/AEscripts.min.js"></script>
 
-<script src="{{app.path}}/js/jcarousellite_1.0.1c4.js" type="text/javascript"></script>
-<script src="{{app.path}}/js/jcarousellite-function.js" type="text/javascript"></script> {# CARRUSEL BANNERS #}
+<script src="{{app.path}}/js/jcarousellite_1.0.1c4.min.js" type="text/javascript"></script>
+<script src="{{app.path}}/js/jcarousellite-function.min.js" type="text/javascript"></script> {# CARRUSEL BANNERS #}
 
 {#  MENÚ DESPLEGABLE --------------------------------------------------------------------------------------------- #}
-<script type="text/javascript" src="{{app.path}}/js/jquery.cookie.js"></script>
+<script type="text/javascript" src="{{app.path}}/js/jquery.cookie.min.js"></script>
 <script type="text/javascript" src="{{app.path}}/js/jquery.hoverIntent.minified.js"></script>
 <script type="text/javascript" src="{{app.path}}/js/jquery.dcjqaccordion.2.7.min.js"></script> 
-<script type="text/javascript" src="{{app.path}}/js/acordeon-menu-function.js"></script>
+<script type="text/javascript" src="{{app.path}}/js/acordeon-menu-function.min.js"></script>
 {# -------------------------------------------------------------------------------------------------------------- #}
 
 
 
-<script type="text/javascript" src="{{app.path}}/js/jquery-uniform-formulario.js"></script> <!-- Formulario -->
+<script type="text/javascript" src="{{app.path}}/js/jquery-uniform-formulario.min.js"></script> <!-- Formulario -->
 <script>
-	$(function() {
-		$(":checkbox").uniform();
-	});	
+$(function() {
+    $(":checkbox").uniform();
+});	
 </script>
 <!-- TERMINA JQUERY UI -->
 
 
-
-
-
-
 <script type="text/javascript">
-		jQuery(document).ready(function($){
-	
+jQuery(document).ready(function($){	
 	$("a[rel='pop-up']").click(function () {
 	var caracteristicas = "height="+(screen.availHeight - 40)+",width="+(screen.availWidth - 13)+",screenX=0,screenY=0,left=0,top=0,status=no,menubar=yes,scrollbars=yes,resizable=yes,toolbar=yes,location=yes";
 	nueva=window.open(this.href, 'Popup', caracteristicas);
