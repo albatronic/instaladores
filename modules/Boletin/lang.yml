@@ -1,0 +1,6 @@
+## YAML Template.
+---
+es:
+  boletines: Boletines
+  noHayBoletines: Actualmente no hay ningún boletín disponible
+

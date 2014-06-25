@@ -30,8 +30,9 @@
 
            <article class="footerDer">
                <span>{{values.LABELS.siguenos}}</span>
-               <a href="" id="facebook" title="{{values.LABELS.facebook}}">{{values.LABELS.facebook}}</a>
-               <a href="" id="twitter" title="{{values.LABELS.twitter}}">{{values.LABELS.twitter}}</a>
+               {% for red in values.redes %}
+               <a href="{{red.url}}/{{red.idUsuario}}" target="_blank" id="{{red.titulo}}" title="{{red.titulo}}">{{red.titulo}}</a>
+               {% endfor %}
            </article>
         </section>   
    </section>

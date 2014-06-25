@@ -136,7 +136,7 @@ if ($rq->isOldBrowser()) {
     $rows = $url->cargaCondicion("Id,Idioma,UrlFriendly,Controller,Action,Parameters,Entity,IdEntity", "UrlFriendly='/oldbrowser'");
 } else {
     // Localizar la url amigable
-    $rows = $rq->getUrlFriendly($app['path']);
+    $rows = $url->cargaCondicion("Id,Idioma,UrlFriendly,Controller,Action,Parameters,Entity,IdEntity", "UrlFriendly='{$rq->getUrlFriendly($app['path'])}'");
 
     // Localizar la url amigable
     //$rows[0] = $url->matchUrl($rq->getUrlFriendly($app['path']));
@@ -275,5 +275,3 @@ unset($con);
 unset($loader);
 unset($twig);
 unset($config);
-
-?>

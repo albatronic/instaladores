@@ -111,18 +111,16 @@ class Request {
                 // A la url le quito la parte del path a la aplicacion
                 $urlSinPath = explode("/", str_replace($appPath, "", $url));
                 $urlAmigable = "/" . $urlSinPath[1];
-                $filtro = "UrlFriendly='{$urlAmigable}'";
                 break;
             case 'POST':
-                $filtro = "Controller='{$this->request['controller']}' and Entity='{$this->request['entity']}' and IdEntity='{$this->request['idEntity']}'";
+                $url = $this->request['controller'];
+                // A la url le quito la parte del path a la aplicacion
+                $urlSinPath = explode("/", str_replace($appPath, "", $url));
+                $urlAmigable = "/" . $urlSinPath[0];
                 break;
         }
 
-        $url = new CpanUrlAmigables();
-        $rows = $url->cargaCondicion("Id,Idioma,UrlFriendly,Controller,Action,Parameters,Entity,IdEntity", $filtro);
-        unset($url);
-        
-        return $rows;
+        return $urlAmigable;
     }
 
     /**

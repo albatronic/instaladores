@@ -24,6 +24,25 @@ class BoletinController extends ControllerProject {
         
         return parent::IndexAction();
     }
+    
+    public function ListadoAction() {
+        
+        $boletin = new BolBoletines();
+        
+        $rows = $boletin->cargaCondicion("Id","1","PublishedAt DESC");
+        unset($boletin);
+        
+        foreach ($rows as $row) {
+            $boletines[] = new BolBoletines($row['Id']);
+        }
+
+        $this->values['boletines'] = $boletines;
+        
+        return array(
+            'values' => $this->values,
+            'template' => 'Boletin/listado.html.twig',
+        );
+    }
 }
 
 ?>

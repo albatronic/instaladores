@@ -1,0 +1,28 @@
+{# Listado de boletines #}
+{% extends layout %}
+
+{% block navegacion %}{% include '_global/navegacionGeneral.html.twig' %}{% endblock %}
+
+{% block aside %}{% include '_global/asideGeneralyHome.html.twig' %}{% endblock %}
+
+{% block contenido %}
+
+<section class="contenedorGrande">
+    {% include '_global/ruta.html.twig' %}
+    <h1>{{values.TEXTS.boletines}}</h1>
+	<section class="enlaces">
+        {% for boletin in values.boletines %}
+            <article class="enlaceIndividual">
+                <h3>{{macro.link(boletin.Titulo,none,boletin.Href.url,boletin.Href.targetBlank)}}</h3>
+                <br/><p>{{boletin.Resumen}}</p>              
+            </article>
+        {% else %}
+            <p>{{values.TEXTS.noHayBoletines}}</p>
+        {% endfor %}
+	</section>
+</section>   
+{% endblock %}
+
+{% block bannerPie %}
+    {% include '_global/bannerPie.html.twig' %}   
+{% endblock %}
