@@ -649,5 +649,3 @@ class Blog {
         return $array;
     }    
 }
-
-?>
