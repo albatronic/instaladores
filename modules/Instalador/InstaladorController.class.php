@@ -20,7 +20,7 @@ class InstaladorController extends ControllerProject {
         $usuario = new WebUsuarios();
 
         $this->values['municipios'] = $municipio->cargaCondicion("Id,Municipio", "Id in (select distinct(IdMunicipio) from WebUsuarios where Publish='1')", "Municipio ASC");
-        $this->values['codigosPostales'] = $usuario->cargaCondicion("distinct(CodigoPostal) as Id","","CodigoPostal ASC");
+        $this->values['codigosPostales'] = $usuario->cargaCondicion("distinct(CodigoPostal) as Id", "", "CodigoPostal ASC");
 
         unset($municipio);
         unset($usuario);
@@ -34,28 +34,28 @@ class InstaladorController extends ControllerProject {
      */
     public function IndexAction() {
 
-        if ($this->request['idMunicipio'] != '') {
-            $filtro = "IdMunicipio='{$this->request['idMunicipio']}'";
-        } else {
-            $filtro = "CodigoPostal='{$this->request['codigoPostal']}'";
-        }
+        $filtro = ($this->request['idMunicipio'] != '') ?
+                "IdMunicipio='{$this->request['idMunicipio']}' and Checked='1'" :
+                "CodigoPostal='{$this->request['codigoPostal']}' and Checked='1'";
 
         $usuario = new WebUsuarios();
 
         $rows = $usuario->cargaCondicion("Id", "IdPerfil='2' and {$filtro}", "Apellidos ASC");
         $eletricistas = array();
-        foreach ($rows as $row)
+        foreach ($rows as $row) {
             $eletricistas[] = new WebUsuarios($row['Id']);
+        }
         shuffle($eletricistas);
-        
+
         $rows = $usuario->cargaCondicion("Id", "IdPerfil='3' and {$filtro}", "Apellidos ASC");
         $fontaneros = array();
-        foreach ($rows as $row)
+        foreach ($rows as $row) {
             $fontaneros[] = new WebUsuarios($row['Id']);
+        }
         shuffle($fontaneros);
-        
+
         unset($usuario);
-        
+
         $this->values['electricistas'] = $eletricistas;
         $this->values['fontaneros'] = $fontaneros;
         $this->values['idMunicipio'] = $this->request['idMunicipio'];

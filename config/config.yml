@@ -46,8 +46,8 @@ config:
   # NORMALMENTE, EN PRODUCCION 'path' estará vacio
   app:
     name: 'Asociación de Instaladores de Granada'
-    url: http://localhost/instaladores
-    path: /instaladores
+    url: http://instaladores.local
+    path: 
     framework: bin/albatronic/
 
   # SEMILLA PARA CONSTRUIR CLAVES MD5

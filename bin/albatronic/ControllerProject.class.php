@@ -24,7 +24,7 @@ class ControllerProject extends ControllerWeb {
         // Menú Cabecera para todas las páginas excepto el home
         $this->values['menuCabeceraGeneral'] = Menu::getMenuN(5,7);
         // Menú del pie
-        $this->values['menuPie'] = Menu::getMenuN(3, 4);
+        $this->values['menuPie'] = Menu::getMenuN(3, 5);
         // Menú principal, el desplegable de la izquierda
         $this->values['menuDesplegable'] = Menu::getMenuDesplegable(1);
         
