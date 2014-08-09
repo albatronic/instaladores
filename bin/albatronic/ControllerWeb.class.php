@@ -486,13 +486,14 @@ class ControllerWeb {
         unset($objetoPadre);
 
         foreach ($meta['pro'] as $key => $value) {
-            if ($meta['objetoActual'][$key] != '')
+            if (trim($meta['objetoActual'][$key]) != '') {
                 $metaInformacion[$key] = $meta['objetoActual'][$key];
-            elseif ($meta['objetoPadre'][$key] != '')
+            } elseif (trim($meta['objetoPadre'][$key]) != '') {
                 $metaInformacion[$key] = $meta['objetoPadre'][$key];
-            else
+            } else {
                 $metaInformacion[$key] = $value;
-        }
+            }
+        }        
 
         $metaInformacion['lang'] = $_SESSION['idiomas']['disponibles'][$_SESSION['idiomas']['actual']]['codigoLargo'];
         $metaInformacion['blockRobots'] = $this->varEnv['Pro']['blockRobots'];
