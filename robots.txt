@@ -1,5 +1,3 @@
-Sitemap: http://www.instaladoresgranada.com/sitemap.xml.php
-
 User-agent: *
 # Desarrollo
 #Disallow: /
@@ -13,3 +11,8 @@ Disallow: /lang/
 Disallow: /lib/
 Disallow: /log/
 Disallow: /tmp/
+Sitemap: http://www.instaladoresgranada.com/sitemap/index.xml
+Sitemap: http://www.instaladoresgranada.com/sitemap/secciones.xml
+Sitemap: http://www.instaladoresgranada.com/sitemap/contenidos.xml
+Sitemap: http://www.instaladoresgranada.com/sitemap/noticias.xml
+Sitemap: http://www.instaladoresgranada.com/sitemap/eventos.xml
