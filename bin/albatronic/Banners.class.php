@@ -39,9 +39,9 @@ class Banners {
         $limite = ($nItems <= 0) ? "" : "LIMIT {$nItems}";
 
         // Valido el tipo de banner. Si no es correcto lo pongo a tipo 0 (fijo)
-        if ($tipo < 0)
+        if ($tipo < 0) {
             $filtroTipo = "(1)";
-        else {
+        } else {
             $tipoBanner = new TiposBanners($tipo);
             if ($tipoBanner->getIDTipo() == null)
                 $tipo = 0;
@@ -69,8 +69,9 @@ class Banners {
             $documentos = $banner->getDocuments('image%');
 
             $imagenes = array();
-            foreach ($documentos as $documento)
+            foreach ($documentos as $documento) {
                 $imagenes[] = $documento->getPathName();
+            }
 
             // No se tiene en cuenta los banners que no tienen imagenes
             if (count($imagenes)) {
@@ -89,5 +90,3 @@ class Banners {
         return $array;
     }
 }
-
-?>
