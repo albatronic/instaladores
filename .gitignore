@@ -1,3 +1,6 @@
 /tmp/
 /log/
 /nbproject/
+/docs/
+error_log
+/config/configProd.yml

@@ -24,7 +24,7 @@
 #
 
 config:
-  debug_mode: false
+  debug_mode: true
 
   # PARA MOSTRAR O NO EL BOTON DE LA AUDITORIA DE LOS FORMULARIOS
   audit_mode: true
@@ -46,8 +46,8 @@ config:
   # NORMALMENTE, EN PRODUCCION 'path' estará vacio
   app:
     name: 'Asociación de Instaladores de Granada'
-    url: http://www.albatronic.com/webs/instaladores
-    path: /webs/instaladores
+    url: http://instaladores.local
+    path: 
     framework: bin/albatronic/
 
   # SEMILLA PARA CONSTRUIR CLAVES MD5
@@ -79,10 +79,17 @@ config:
   #    PARA FACILITAR LA PORTABILIDAD DEL MODELO DE DATOS ENTRE DISTINTAS BASES DE DATOS, SE SEGUIR?? LA
   #    SIGUIENTE REGLA: SI EN LA PROPIEDAD $_conectionName DEL MODELO DE DATOS DE CADA TABLA NO SE INDICA 
   #    NINGUN VALOR, SE ENTENDER?? QUE LA CONEXI??N SER?? LA PRIMERA QUE HAYA DEFINIDA DENTRO DE ESTE NODO (conections).
-  conections:
+  conections1:
     instaladores:
       dbEngine: mysql
       host: 82.194.78.72
       user: goanaes_instalad
       password: I12#34s
       database: goanaes_instaladores
+  conections:
+    instaladores:
+      dbEngine: mysql
+      host: localhost
+      user: root
+      password: 
+      database: albatro_instaladores
