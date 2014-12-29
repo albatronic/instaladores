@@ -127,8 +127,9 @@ if ((!$_SESSION['EntornoDesarrollo']) and (!$_SESSION['origen'])) {
 // ACTIVAR EL FORMATO DE LA MONEDA
 // ----------------------------------------------------------------
 setlocale(LC_MONETARY, $rq->getLanguage());
-if ((!isset($_SESSION['idiomas']['actual'])) or ($_SESSION['EntornoDesarrollo']))
+if ((!isset($_SESSION['idiomas']['actual'])) or ($_SESSION['EntornoDesarrollo'])) {
     ControllerWeb::setIdioma();
+}
 
 // Si el navegador es antiguo muestro template especial
 $url = new CpanUrlAmigables();
@@ -142,8 +143,9 @@ if ($rq->isOldBrowser()) {
     //$rows[0] = $url->matchUrl($rq->getUrlFriendly($app['path']));
     
     if (count($url->getErrores()) == 0) {
-        if (!$rows)
+        if (!$rows) {
             $rows = $url->cargaCondicion("Id,Idioma,UrlFriendly,Controller,Action,Parameters,Entity,IdEntity", "UrlFriendly='/error404'");
+        }
     } else {
         print_r($url->getErrores());
         die("Error de conexión a la BD");
@@ -189,11 +191,13 @@ switch ($rq->getMethod()) {
 }
 
 // Si no se ha localizado el controlador, lo pongo a Error404
-if ($controller == '')
+if ($controller == '') {
     $controller = 'Error404';
+}
 // Si no se ha localizado la action, la pongo a Index
-if ($action == '')
+if ($action == '') {
     $action = "Index";
+}
 
 // Si no existe el controller lo pongo a 'Error404'
 $fileController = "modules/" . $controller . "/" . $controller . "Controller.class.php";
@@ -213,16 +217,18 @@ $metodo = $action . "Action";
 //------------------------------------------------------------------------------
 include_once $fileController;
 $con = new $clase($request);
-if (!method_exists($con, $metodo))
+if (!method_exists($con, $metodo)) {
     $metodo = "IndexAction";
+}
 $result = $con->{$metodo}();
 
 // Si el navegador es mobile y existe la template mobile, lo muestro.
 // En caso contrario muestro el template normal.
 if ($_SESSION['isMobile']) {
     $aux = str_replace('.html.twig', '.mobile.html.twig', $result['template']);
-    if (file_exists("modules/{$aux}"))
+    if (file_exists("modules/{$aux}")) {
         $result['template'] = $aux;
+    }
 }
 
 $result['values']['urlAmigable'] = $_SESSION['urlFriendly'];
