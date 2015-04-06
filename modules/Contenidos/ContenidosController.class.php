@@ -44,16 +44,18 @@ class ContenidosController extends ControllerProject {
                         'Comentarios' => array('valor' => 'Comentarios', 'error' => false),
                     ),
                 );
-                $this->values['entity'] = "GconContenidos";
-                $this->values['idEntity'] = $this->request['IdEntity'];
+                $this->values['Entity'] = "GconContenidos";
+                $this->values['IdEntity'] = $this->request['IdEntity'];
                 $this->values['formContacta'] = $this->formContacta;
                 break;
 
             case 'POST':
+                $contenido = Contenidos::getContenidoDesarrollado($this->request['idEntity'], 12);
+                $this->values['contenidoDesarrollado'] = $contenido;
                 $this->formContacta = $this->request['campos'];
 
                 if ($this->Valida()) {
-                    if ((file_exists('docs/plantillaMailVisitante.htm')) and (file_exists('docs/plantillaMailWebMaster.htm'))) {
+                    if ((file_exists('docs/plantillaMailVisitante.htm')) and ( file_exists('docs/plantillaMailWebMaster.htm'))) {
 
                         $mailer = new Mail($this->varWeb['Pro']['mail']);
                         $envioOk = $this->enviaVisitante($mailer, 'docs/plantillaMailVisitante.htm');
@@ -96,7 +98,7 @@ class ContenidosController extends ControllerProject {
      * @return boolean TRUE si se envío con éxito
      */
     private function enviaVisitante($mailer, $ficheroPlantilla) {
-        $mensaje  = "<p>Confirmación de la solicitud de inscripción a:</p>{$this->values['contenidoDesarrollado']['contenido']->getTitulo()}<br/><br/>";
+        $mensaje = "<p>Confirmación de la solicitud de inscripción a:</p>{$this->values['contenidoDesarrollado']['contenido']->getTitulo()}<br/><br/>";
         $mensaje .= $this->varWeb['Pro']['mail']['mensajeConfirmacion'];
 
         $plantilla = file_get_contents($ficheroPlantilla);
@@ -125,7 +127,7 @@ class ContenidosController extends ControllerProject {
      */
     private function enviaWebMaster($mailer, $ficheroPlantilla) {
 
-        $mensaje  = "<p>La empresa/persona abajo indicada está interesada en inscribirse en:</p>";
+        $mensaje = "<p>La empresa/persona abajo indicada está interesada en inscribirse en:</p>";
         $mensaje .= "{$this->values['contenidoDesarrollado']['contenido']->getTitulo()}<br/><br/>";
         $mensaje .= "<p>Nombre y apellidos:</p>{$this->formContacta['campos']['Nombre']['valor']} {$this->formContacta['campos']['Apellidos']['valor']}<br/>";
         $mensaje .= "<p>Empresa:</p>{$this->formContacta['campos']['Empresa']['valor']}<br/>";
@@ -178,4 +180,3 @@ class ContenidosController extends ControllerProject {
 
 }
 
-?>

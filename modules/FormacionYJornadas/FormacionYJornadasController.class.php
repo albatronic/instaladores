@@ -46,4 +46,3 @@ class FormacionYJornadasController extends ControllerProject {
 
 }
 
-?>
